@@ -1,0 +1,40 @@
+// --- COLORS
+
+$primary: #2880f6;
+$primary-light: #76b0ff;
+$gray-06: #2c2e32;
+$gray-05: #2f343a;
+$gray-04: #45484b;
+$gray-03: #a6acb1;
+$gray-02: #c3c9d1;
+$gray-01: #f7f9fd;
+$translucent: rgba(203, 204, 206, 0.1);
+
+// ------ GRADIENTS
+
+$gradient-primary: linear-gradient(to right, $primary, $primary-light);
+$gradient-primary-highlight: linear-gradient(to right, #9795ef, $primary);
+$gradient-gray: linear-gradient(to right, $gray-04, $gray-03);
+
+// --- FONT-SIZE
+
+$text-xs: 0.5rem; //8px
+$text-sm: 0.75rem; //12px
+$text-base: 1rem; //16px
+$text-lg: 1.25rem; //20px
+$text-xl: 1.5rem; //24px
+$text-2xl: 1.75rem; //28px
+$text-3xl: 2rem; //32px
+$text-4xl: 2.25rem; //36px
+$text-5xl: 2.5rem; //40px
+$text-6xl: 3rem; //48px
+
+// --- BREAKPOINTS
+
+$bp-xs: 400px;
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-2xl: 1536px;
+$bp-3xl: 1920px;

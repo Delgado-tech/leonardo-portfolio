@@ -1,0 +1,19 @@
+@mixin flexCenter($direction: row) {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: $direction;
+}
+
+@mixin beam-gradient($color: black, $orientation: right) {
+	background: linear-gradient(
+		to $orientation,
+		base.$translucent,
+		$color,
+		base.$translucent
+	);
+}
+
+@mixin debugContainer() {
+	background-color: red !important;
+}
