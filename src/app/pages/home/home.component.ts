@@ -1,4 +1,12 @@
-import { Component } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import {
+	Component,
+	ElementRef,
+	Inject,
+	PLATFORM_ID,
+	Renderer2,
+	ViewChild,
+} from '@angular/core';
 import { ScrollObserverService } from '../../services/scroll-observer.service';
 
 @Component({
@@ -9,12 +17,36 @@ import { ScrollObserverService } from '../../services/scroll-observer.service';
 	styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-	constructor(protected scrollObserver: ScrollObserverService) {
-		scrollObserver.registerObserver({
-			id: '1',
+	@ViewChild('container') containerRef!: ElementRef<HTMLDivElement>;
+
+	img_star: string = '../../../assets/shapes/star.svg';
+
+	constructor(
+		@Inject(PLATFORM_ID)
+		private platformId: any,
+		private renderer: Renderer2,
+		private scrollObserver: ScrollObserverService
+	) {
+		this.scrollObserver.registerObserver({
+			id: '3',
 			handler: (props) => {
-				console.log(props.element.topInView);
+				if (!this.containerRef) return;
+				const container = this.containerRef.nativeElement;
+
+				const textDirection = props.scroll.isScrollingDown
+					? 'normal'
+					: 'reverse';
+				container.style.setProperty('--animation_direction', textDirection);
 			},
 		});
+	}
+
+	ngAfterViewInit() {
+		if (isPlatformBrowser(this.platformId)) return;
+
+		const container = this.containerRef.nativeElement;
+		const ulElement = container.querySelector('ul') as HTMLElement;
+
+		this.renderer.appendChild(container, ulElement.cloneNode(true));
 	}
 }

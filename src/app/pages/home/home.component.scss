@@ -1,17 +1,57 @@
-@use "../../../scss/base";
+@use "../../../scss/base" as base;
 
-p {
-	padding: 0 30%;
-	font-size: base.$text-2xl;
-	height: 100%;
-	min-height: 100vh;
+$gap: 80px;
+
+.text_slider {
+	&:root {
+		--animation_duration: 20s;
+		--animation_direction: normal;
+		--animation_play_state: running;
+	}
+
+	background-color: base.$gray-06;
+	color: base.$gray-01;
+
+	margin-top: 25rem;
+	padding: calc($gap / 4) 0;
+	display: flex;
+	overflow: hidden;
+	animation-play-state: paused;
+
+	ul {
+		display: flex;
+		gap: $gap;
+		padding: 0 calc($gap / 2);
+		width: fit-content;
+		animation: slide_left__animation linear var(--animation_duration, 20s)
+			var(--animation_direction, normal) var(--animation_play_state, running)
+			infinite forwards;
+
+		li {
+			display: flex;
+			gap: $gap;
+
+			span {
+				text-wrap: nowrap;
+				font-size: base.$text-lg;
+				font-family: "Poppins", sans-serif;
+				letter-spacing: 1.5px;
+				text-transform: uppercase;
+				font-weight: 500;
+			}
+		}
+
+		img {
+			width: base.$text-lg;
+		}
+	}
 }
 
-p:nth-child(1) {
-	padding: 10% 30%;
-	background-color: red;
-}
-
-p:nth-child(2) {
-	background-color: blue;
+@keyframes slide_left__animation {
+	to {
+		transform: translateX(0%);
+	}
+	from {
+		transform: translateX(-100%);
+	}
 }
