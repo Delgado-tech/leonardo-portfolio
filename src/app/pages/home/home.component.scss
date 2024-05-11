@@ -23,9 +23,9 @@ $gap: 80px;
 		gap: $gap;
 		padding: 0 calc($gap / 2);
 		width: fit-content;
-		animation: slide_left__animation linear var(--animation_duration, 20s)
-			var(--animation_direction, normal) var(--animation_play_state, running)
-			infinite forwards;
+		// animation: slide_left__animation linear var(--animation_duration, 20s)
+		// 	var(--animation_direction, normal) var(--animation_play_state, running)
+		// 	infinite forwards;
 
 		li {
 			display: flex;

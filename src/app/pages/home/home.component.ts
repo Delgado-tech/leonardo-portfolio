@@ -8,6 +8,7 @@ import {
 	ViewChild,
 } from '@angular/core';
 import { ScrollObserverService } from '../../services/scroll-observer.service';
+import { clamp } from '../../utils/clamp';
 
 @Component({
 	selector: 'app-home',
@@ -27,26 +28,49 @@ export class HomeComponent {
 		private renderer: Renderer2,
 		private scrollObserver: ScrollObserverService
 	) {
-		this.scrollObserver.registerObserver({
-			id: '3',
-			handler: (props) => {
-				if (!this.containerRef) return;
-				const container = this.containerRef.nativeElement;
-
-				const textDirection = props.scroll.isScrollingDown
-					? 'normal'
-					: 'reverse';
-				container.style.setProperty('--animation_direction', textDirection);
-			},
-		});
+		// this.scrollObserver.registerObserver({
+		// 	id: '3',
+		// 	handler: (props) => {
+		// 		if (!this.containerRef) return;
+		// 		const container = this.containerRef.nativeElement;
+		// 		const textDirection = props.scroll.isScrollingDown
+		// 			? 'normal'
+		// 			: 'reverse';
+		// 		container.style.setProperty('--animation_direction', textDirection);
+		// 	},
+		// });
 	}
 
 	ngAfterViewInit() {
-		if (isPlatformBrowser(this.platformId)) return;
-
+		//]
 		const container = this.containerRef.nativeElement;
-		const ulElement = container.querySelector('ul') as HTMLElement;
+		const ulElements = container.querySelectorAll(
+			'ul'
+		) as NodeListOf<HTMLUListElement>;
 
-		this.renderer.appendChild(container, ulElement.cloneNode(true));
+		if (isPlatformBrowser(this.platformId)) {
+			const startAnimation = 0;
+			const endAnimation = -100;
+			const duration = 10000;
+			const pixel = (endAnimation - startAnimation) / duration;
+			const tick = 10;
+			let progress = 0;
+			let speed = 1;
+
+			Array.prototype.forEach.call(ulElements, (element) => {
+				const animation = setInterval(() => {
+					if (progress <= endAnimation) {
+						progress = 0;
+					}
+					console.log(pixel);
+					this.renderer.setStyle(element, 'translate', `${progress}%`);
+					progress = clamp(progress + pixel * tick, -100, 0);
+				}, tick);
+			});
+		} else {
+			const ulElement = container.querySelector('ul') as HTMLElement;
+
+			this.renderer.appendChild(container, ulElement.cloneNode(true));
+		}
 	}
 }
