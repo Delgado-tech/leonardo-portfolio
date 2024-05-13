@@ -3,12 +3,14 @@ import { provideRouter } from '@angular/router';
 
 import { provideClientHydration } from '@angular/platform-browser';
 import { routes } from './app.routes';
-import { ScrollObserverService } from './services/scroll-observer.service';
+import { AnimationService } from './services/animation/animation.service';
+import { ScrollObserverService } from './services/scroll-observer/scroll-observer.service';
 
 export const appConfig: ApplicationConfig = {
 	providers: [
 		provideRouter(routes),
 		provideClientHydration(),
 		ScrollObserverService,
+		AnimationService,
 	],
 };

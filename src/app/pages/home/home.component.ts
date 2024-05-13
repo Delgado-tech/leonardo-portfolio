@@ -1,14 +1,15 @@
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import {
 	Component,
 	ElementRef,
+	inject,
 	Inject,
+	NgZone,
 	PLATFORM_ID,
 	Renderer2,
 	ViewChild,
 } from '@angular/core';
-import { ScrollObserverService } from '../../services/scroll-observer.service';
-import { clamp } from '../../utils/clamp';
+import { AnimationService } from '../../services/animation/animation.service';
 
 @Component({
 	selector: 'app-home',
@@ -22,52 +23,42 @@ export class HomeComponent {
 
 	img_star: string = '../../../assets/shapes/star.svg';
 
+	ulElements?: NodeListOf<HTMLUListElement>;
+
 	constructor(
 		@Inject(PLATFORM_ID)
 		private platformId: any,
 		private renderer: Renderer2,
-		private scrollObserver: ScrollObserverService
+		private animationService: AnimationService
 	) {
-		// this.scrollObserver.registerObserver({
-		// 	id: '3',
-		// 	handler: (props) => {
-		// 		if (!this.containerRef) return;
-		// 		const container = this.containerRef.nativeElement;
-		// 		const textDirection = props.scroll.isScrollingDown
-		// 			? 'normal'
-		// 			: 'reverse';
-		// 		container.style.setProperty('--animation_direction', textDirection);
-		// 	},
-		// });
+		if (isPlatformBrowser(this.platformId)) {
+			inject(NgZone).runOutsideAngular(() => {
+				const interval = setInterval(() => {
+					if (!this.ulElements) return;
+
+					this.animationService.animation(this.ulElements, {
+						style: 'translate',
+						start: 0,
+						end: -100,
+						scrollChangeDirection: true,
+						scrollAcceleration: true,
+						infinite: true,
+						duration: 20000,
+					});
+
+					clearInterval(interval);
+				}, 10);
+			});
+		}
 	}
 
 	ngAfterViewInit() {
-		//]
 		const container = this.containerRef.nativeElement;
-		const ulElements = container.querySelectorAll(
+		this.ulElements = container.querySelectorAll(
 			'ul'
 		) as NodeListOf<HTMLUListElement>;
 
-		if (isPlatformBrowser(this.platformId)) {
-			const startAnimation = 0;
-			const endAnimation = -100;
-			const duration = 10000;
-			const pixel = (endAnimation - startAnimation) / duration;
-			const tick = 10;
-			let progress = 0;
-			let speed = 1;
-
-			Array.prototype.forEach.call(ulElements, (element) => {
-				const animation = setInterval(() => {
-					if (progress <= endAnimation) {
-						progress = 0;
-					}
-					console.log(pixel);
-					this.renderer.setStyle(element, 'translate', `${progress}%`);
-					progress = clamp(progress + pixel * tick, -100, 0);
-				}, tick);
-			});
-		} else {
+		if (isPlatformServer(this.platformId)) {
 			const ulElement = container.querySelector('ul') as HTMLElement;
 
 			this.renderer.appendChild(container, ulElement.cloneNode(true));
