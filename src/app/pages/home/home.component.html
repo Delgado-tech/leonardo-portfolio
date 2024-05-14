@@ -1,36 +1,10 @@
-<section id="3" class="text_slider" #container>
-    <ul>
-        <li>
-            <span>Design de Interfaces</span>
-            <img [src]="img_star" alt="ddecoration_star" />
-        </li>
-        <li>
-            <span>Aplicativos Mobile</span>
-            <img [src]="img_star" alt="ddecoration_star" />
-        </li>
-        <li>
-            <span>Serviços AWS</span>
-            <img [src]="img_star" alt="ddecoration_star" />
-        </li>
-        <li>
-            <span>Dashboards</span>
-            <img [src]="img_star" alt="ddecoration_star" />
-        </li>
-        <li>
-            <span>Gerenciador de Estoque</span>
-            <img [src]="img_star" alt="ddecoration_star" />
-        </li>
-        <li>
-            <span>ECommerces</span>
-            <img [src]="img_star" alt="ddecoration_star" />
-        </li>
-        <li>
-            <span>Marketing de marca</span>
-            <img [src]="img_star" alt="ddecoration_star" />
-        </li>
-        <li>
-            <span>Landing Pages</span>
-            <img [src]="img_star" alt="ddecoration_star" />
-        </li>
-    </ul>
-</section>
+<div><app-text-slider [text-list]="[
+		'Design de Interfaces',
+		'Aplicativos Mobile',
+		'Serviços AWS',
+		'Dashboards',
+		'Gerenciador de Estoque',
+		'ECommerces',
+		'Marketing de marca',
+		'Landing Pages',
+	]" [icon-src]="img_star" /></div>

@@ -1,0 +1,12 @@
+<app-content-slider [scroll-change-direction]="true" [use-scroll-acceleration]="true">
+    <div class="text_slider">
+        <ul class="wrapper">
+            @for (text of textList; track text) {
+            <li>
+                <span>{{text}}</span>
+                <img [src]="iconSrc" alt="star" />
+            </li>
+            }
+        </ul>
+    </div>
+</app-content-slider>

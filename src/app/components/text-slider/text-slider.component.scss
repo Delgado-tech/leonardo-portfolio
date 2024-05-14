@@ -1,0 +1,44 @@
+@use "../../../scss/base" as base;
+
+$gap: 80px;
+
+.text_slider {
+	&:root {
+		--animation_duration: 20s;
+		--animation_direction: normal;
+		--animation_play_state: running;
+	}
+
+	background-color: base.$gray-06;
+	color: base.$gray-01;
+
+	margin-top: 50rem;
+	padding: calc($gap / 4) 0;
+	display: flex;
+	overflow: hidden;
+
+	ul {
+		display: flex;
+		gap: $gap;
+		padding: 0 calc($gap / 2);
+		width: fit-content;
+
+		li {
+			display: flex;
+			gap: $gap;
+
+			span {
+				text-wrap: nowrap;
+				font-size: base.$text-lg;
+				font-family: "Poppins", sans-serif;
+				letter-spacing: 1.5px;
+				text-transform: uppercase;
+				font-weight: 500;
+			}
+		}
+
+		img {
+			width: base.$text-lg;
+		}
+	}
+}
