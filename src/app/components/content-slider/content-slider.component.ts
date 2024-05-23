@@ -25,7 +25,7 @@ export class ContentSliderComponent {
 
 	@ViewChild('container') containerRef!: ElementRef<HTMLDivElement>;
 
-	wrapperElements?: NodeListOf<HTMLElement>;
+	wrapperElements: HTMLElement[] = [];
 
 	constructor(
 		@Inject(PLATFORM_ID)
@@ -38,14 +38,19 @@ export class ContentSliderComponent {
 				const interval = setInterval(() => {
 					if (!this.wrapperElements) return;
 
-					this.animationService.animation(this.wrapperElements, {
-						style: 'translate',
-						start: 0,
-						end: -100,
-						scrollChangeDirection: this.scrollChangeDirection,
-						scrollAcceleration: this.scrollAcceleration,
-						infinite: true,
-						duration: this.duration ?? 20000,
+					this.animationService.createAnimationGroup({
+						HTMLElements: this.wrapperElements,
+						animations: [
+							{
+								style: 'translate',
+								start: 0,
+								end: -100,
+								scrollChangeDirection: this.scrollChangeDirection,
+								scrollAcceleration: this.scrollAcceleration,
+								infinite: true,
+								duration: this.duration ?? 20000,
+							},
+						],
 					});
 
 					clearInterval(interval);
@@ -74,9 +79,11 @@ export class ContentSliderComponent {
 				wrapperElement.cloneNode(true)
 			);
 		} else {
-			this.wrapperElements = container.querySelectorAll(
-				'.wrapper'
-			) as NodeListOf<HTMLElement>;
+			const elements = container.querySelectorAll('.wrapper');
+
+			Array.prototype.forEach.call(elements, (element: HTMLElement) => {
+				this.wrapperElements.push(element);
+			});
 		}
 	}
 }
