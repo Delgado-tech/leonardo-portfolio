@@ -1,10 +1,19 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import {
+	Inject,
+	Injectable,
+	PLATFORM_ID,
+	Renderer2,
+	RendererFactory2,
+} from '@angular/core';
 import { clamp } from '../../utils/clamp';
 import { IObserverItem } from './scroll-observer.service.interfaces';
 
 @Injectable()
 export class ScrollObserverService {
+	private renderer: Renderer2;
+	private unlistenScrollEvent = () => {};
+
 	private observerList: IObserverItem[] = [];
 	private lastScrollPositon: number = 0;
 
@@ -17,8 +26,11 @@ export class ScrollObserverService {
 
 	constructor(
 		@Inject(PLATFORM_ID)
-		private platformId: any
+		private platformId: any,
+		private rendererFactory: RendererFactory2
 	) {
+		this.renderer = this.rendererFactory.createRenderer(null, null);
+
 		if (isPlatformBrowser(this.platformId)) {
 			this.setScrollEvent();
 		}
@@ -37,8 +49,8 @@ export class ScrollObserverService {
 
 		this.setScrollAcceleration();
 
-		this.observerList!.forEach((obs) => {
-			const element = document.getElementById(obs.id);
+		this.observerList.forEach((obs) => {
+			const element = this.renderer.selectRootElement(`#${obs.id}`, true);
 			if (!element) return;
 
 			const rect = element.getBoundingClientRect();
@@ -80,8 +92,11 @@ export class ScrollObserverService {
 		this.scrollPercentage = window.screen.height;
 		const listiner = () => this.onScroll();
 
-		document.removeEventListener('scroll', listiner);
-		document.addEventListener('scroll', listiner);
+		this.unlistenScrollEvent = this.renderer.listen(
+			'document',
+			'scroll',
+			listiner
+		);
 	}
 
 	private setScrollAcceleration() {
@@ -125,5 +140,9 @@ export class ScrollObserverService {
 	unregisterObserver({ id, handler }: IObserverItem) {
 		const index = this.observerList.indexOf({ id: id, handler: handler });
 		this.observerList.splice(index);
+	}
+
+	ngOnDestroy() {
+		this.unlistenScrollEvent();
 	}
 }
