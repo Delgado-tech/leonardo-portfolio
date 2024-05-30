@@ -5,6 +5,12 @@
 	flex-direction: $direction;
 }
 
+@mixin translateCenter {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 @mixin beam-gradient($color: black, $orientation: right) {
 	background: linear-gradient(
 		to $orientation,
@@ -14,6 +20,28 @@
 	);
 }
 
+@mixin size($width: 0, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+@mixin paddingX($left: 0, $right: $left) {
+	padding-left: $left;
+	padding-right: $right;
+}
+
+@mixin paddingY($top: 0, $bottom: $top) {
+	padding-top: $top;
+	padding-bottom: $bottom;
+}
+
 @mixin debugContainer() {
 	background-color: red !important;
+}
+
+.prevent_animation_when_page_load {
+	* {
+		animation-duration: 0s !important;
+		animation-delay: 0s !important;
+	}
 }
