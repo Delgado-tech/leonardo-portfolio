@@ -1,0 +1,28 @@
+<header #header [attr.data-ham-menu-active]="isHamburgerMenuOpen" [attr.data-ham-menu]="isHamburgerMenuVisible"
+    class="prevent_animation_when_page_load">
+    <div class="ham" [attr.data-ham-menu-active]="hamMenuActive" (click)="toggle()">
+        <span class="ham_trace"></span>
+        <span class="ham_trace"></span>
+        <span class="ham_trace"></span>
+    </div>
+    <nav [attr.data-ham-menu-active]="hamMenuActive">
+        <div class="nav_top">
+            <p>@if (hamMenu) {
+                le menu
+                } @else {
+                Leonardo Delgado
+                }</p>
+            <ul class="link-routes">
+                <li [attr.data-show-home-option]="hamMenu" style="--i:2;" class="nav_item_selected"><a>Home</a></li>
+                <li style="--i:3;"><a [routerLink]="['/test']">Serviços</a></li>
+                <li style="--i:4;"><a>Projetos</a></li>
+                <li style="--i:5;"><a>Contato</a></li>
+            </ul>
+        </div>
+        <ul [attr.data-show-social_media]="hamMenu">
+            <li><a>linkedin</a></li>
+            <li><a>instagram</a></li>
+            <li><a>youtube</a></li>
+        </ul>
+    </nav>
+</header>
