@@ -1,3 +1,5 @@
+import { ElementRef } from '@angular/core';
+
 export interface IObserverHandlerProps {
 	element: {
 		HTMLElement: HTMLElement;
@@ -18,6 +20,6 @@ export interface IObserverHandlerProps {
 }
 
 export interface IObserverItem {
-	id: string;
+	HTMLElement: ElementRef<HTMLElement>;
 	handler: (props: IObserverHandlerProps) => void;
 }

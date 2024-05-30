@@ -50,7 +50,7 @@ export class ScrollObserverService {
 		this.setScrollAcceleration();
 
 		this.observerList.forEach((obs) => {
-			const element = this.renderer.selectRootElement(`#${obs.id}`, true);
+			const element = obs.HTMLElement.nativeElement;
 			if (!element) return;
 
 			const rect = element.getBoundingClientRect();
@@ -82,7 +82,10 @@ export class ScrollObserverService {
 					isScrollingDown: this._isScrollingDown,
 				},
 				unregister: () =>
-					this.unregisterObserver({ id: obs.id, handler: obs.handler }),
+					this.unregisterObserver({
+						HTMLElement: obs.HTMLElement,
+						handler: obs.handler,
+					}),
 			});
 		});
 	}
@@ -130,15 +133,15 @@ export class ScrollObserverService {
 		return this._isScrollingDown;
 	}
 
-	registerObserver({ id, handler }: IObserverItem) {
-		this.observerList.push({
-			id,
-			handler,
-		});
+	registerObserver({ HTMLElement, handler }: IObserverItem): IObserverItem {
+		const observerItem: IObserverItem = { HTMLElement, handler };
+
+		this.observerList.push(observerItem);
+		return observerItem;
 	}
 
-	unregisterObserver({ id, handler }: IObserverItem) {
-		const index = this.observerList.indexOf({ id: id, handler: handler });
+	unregisterObserver({ HTMLElement, handler }: IObserverItem) {
+		const index = this.observerList.indexOf({ HTMLElement, handler });
 		this.observerList.splice(index);
 	}
 
