@@ -1,28 +1,40 @@
-<header #header [attr.data-ham-menu-active]="isHamburgerMenuOpen" [attr.data-ham-menu]="isHamburgerMenuVisible"
-    class="prevent_animation_when_page_load">
-    <div class="ham" [attr.data-ham-menu-active]="hamMenuActive" (click)="toggle()">
+<header #header [attr.data-hamburger-menu-open]="isHamburgerMenuOpen"
+    [attr.data-show-hamburger-menu]="showHamburgerMenu" class="prevent_animation_when_page_load">
+    <div class="nav_bar">
+        <nav>
+            <p>Leonardo Delgado</p>
+            <ul class="internal_link_routes">
+                <li><a [routerLink]="['/test']">Serviços</a></li>
+                <li><a>Projetos</a></li>
+                <li><a>Contato</a></li>
+            </ul>
+        </nav>
+    </div>
+    <span class="nav_bar_hamburger_outside" (click)="toggle()"></span>
+    <div class="ham" (click)="toggle()">
         <span class="ham_trace"></span>
         <span class="ham_trace"></span>
         <span class="ham_trace"></span>
     </div>
-    <nav [attr.data-ham-menu-active]="hamMenuActive">
-        <div class="nav_top">
-            <p>@if (hamMenu) {
-                le menu
-                } @else {
-                Leonardo Delgado
-                }</p>
-            <ul class="link-routes">
-                <li [attr.data-show-home-option]="hamMenu" style="--i:2;" class="nav_item_selected"><a>Home</a></li>
-                <li style="--i:3;"><a [routerLink]="['/test']">Serviços</a></li>
-                <li style="--i:4;"><a>Projetos</a></li>
-                <li style="--i:5;"><a>Contato</a></li>
+    <div class="nav_bar_hamburger">
+        <nav>
+            <div class="nav_top">
+                <p>le menu</p>
+
+                <ul class="internal_link_routes">
+                    <li style="--i:2;" class="nav_item_selected nav_home_option">
+                        <a>Home</a>
+                    </li>
+                    <li style="--i:3;"><a [routerLink]="['/test']">Serviços</a></li>
+                    <li style="--i:4;"><a>Projetos</a></li>
+                    <li style="--i:5;"><a>Contato</a></li>
+                </ul>
+            </div>
+            <ul class="external_link_routes">
+                <li><a>linkedin</a></li>
+                <li><a>instagram</a></li>
+                <li><a>youtube</a></li>
             </ul>
-        </div>
-        <ul [attr.data-show-social_media]="hamMenu">
-            <li><a>linkedin</a></li>
-            <li><a>instagram</a></li>
-            <li><a>youtube</a></li>
-        </ul>
-    </nav>
+        </nav>
+    </div>
 </header>
