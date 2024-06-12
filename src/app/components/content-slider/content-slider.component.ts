@@ -44,7 +44,7 @@ export class ContentSliderComponent {
 							{
 								style: 'translate',
 								start: 0,
-								end: -100,
+								end: -50,
 								scrollChangeDirection: this.scrollChangeDirection,
 								scrollAcceleration: this.scrollAcceleration,
 								infinite: true,
@@ -79,11 +79,8 @@ export class ContentSliderComponent {
 				wrapperElement.cloneNode(true)
 			);
 		} else {
-			const elements = container.querySelectorAll('.wrapper');
-
-			Array.prototype.forEach.call(elements, (element: HTMLElement) => {
-				this.wrapperElements.push(element);
-			});
+			const elements = container.querySelector('.wrapper') as HTMLElement;
+			this.wrapperElements.push(elements.parentElement!);
 		}
 	}
 }
