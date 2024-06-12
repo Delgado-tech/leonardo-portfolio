@@ -1,0 +1,123 @@
+@use "../../../../../scss/base" as base;
+
+@import "../../../../../scss/utils.scss";
+
+.home_introduction_wrapper {
+	background-color: base.$gray-02;
+	position: relative;
+	height: clamp(800px, 100vh, 900px);
+}
+
+.home_introduction {
+	display: flex;
+	height: 100%;
+	position: relative;
+	overflow-y: hidden;
+}
+
+.home_introduction__main_text {
+	@include paddingY(236px, 96px);
+	@include paddingX(15%, 2%);
+
+	position: relative;
+	background-color: base.$gray-01;
+	width: calc(55% - 15% - 2%);
+	height: calc(100% - 236px - 96px);
+
+	&__wave {
+		position: absolute;
+		top: 0;
+		left: 99.5%;
+		width: 10%;
+		height: 100%;
+		filter: drop-shadow(2px 0px 1px rgba(0, 0, 0, 0.04));
+
+		path {
+			fill: base.$gray-01;
+		}
+	}
+
+	.apresentation_title {
+		width: fit-content;
+		position: relative;
+
+		&::before {
+			@include size(100px);
+			content: " ";
+
+			position: absolute;
+			top: -50px;
+			left: -50px;
+
+			border-radius: 50%;
+
+			opacity: 0.5;
+			filter: blur(70px);
+			background-color: base.$primary-light;
+		}
+
+		p {
+			text-transform: uppercase;
+			font-family: "Poppins", sans-serif;
+			font-weight: 600;
+		}
+
+		&_prefix {
+			color: base.$gray-02;
+			font-size: base.$text-xl;
+		}
+
+		&_name {
+			color: base.$primary;
+			font-size: base.$text-6xl;
+		}
+
+		&_profession_wrapper {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+
+		&_profession_wrapper span {
+			width: 100%;
+			height: 1px;
+			border-radius: 50px;
+			background-color: base.$primary;
+		}
+
+		&_profession_wrapper p {
+			color: base.$gray-06;
+			font-size: base.$text-lg;
+			text-wrap: nowrap;
+		}
+	}
+
+	.apresentation_text {
+		width: clamp(225px, 100%, 550px);
+		margin-top: 48px;
+
+		text-transform: initial;
+		font-family: "Roboto", sans-serif;
+		font-size: base.$text-lg;
+		font-weight: 400;
+		line-height: 1.5;
+	}
+}
+
+.home__character {
+	width: 45%;
+	right: 0;
+	position: absolute;
+}
+
+.cta_section {
+	@include paddingY(80px);
+	display: flex;
+	gap: 32px;
+}
+
+.home__text_slider {
+	position: absolute;
+	width: 101%;
+	transform: rotate(1deg) translate(-2px, -20px);
+}
