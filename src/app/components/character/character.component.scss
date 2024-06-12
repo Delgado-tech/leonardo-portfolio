@@ -15,6 +15,13 @@ $vapour-translate-x: calc(($index * $vapour-width) + ($index * 1px));
 	filter: blur(8px);
 }
 
+.character-wrapper {
+	display: flex;
+	justify-content: center;
+	padding: 10%;
+	scale: 90%;
+}
+
 @keyframes animate-vapour {
 	0% {
 		transform: translateX($vapour-translate-x) translateY(0);

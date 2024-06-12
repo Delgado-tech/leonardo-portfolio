@@ -180,10 +180,15 @@ export class CharacterComponent {
 
 					// voltar olhos e sombramcelhas ao ponto inicial
 					this.eyesElement.style.translate = `0% 0%`;
+					this.eyesElement.style.transition = `100ms ease`;
 					eyebrowsLeft.style.translate = '0px';
 					eyebrowsLeft.style.rotate = '0deg';
 					eyebrowsRight.style.translate = '0px';
 					eyebrowsRight.style.rotate = '0deg';
+
+					setTimeout(() => {
+						this.eyesElement.style.transition = `none`;
+					}, 100);
 				}
 
 				this.outsideOfCharacterDiv = true;
