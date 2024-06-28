@@ -1,0 +1,44 @@
+<section>
+    <app-tooltip>
+        <p>Test</p>
+    </app-tooltip>
+
+    <!-- TODO: fazer um mock com todos os icones de tecnologias, os icones serão utilizados como um mask para um quadrado 32x32 que contera a cor ou gradiente escolhido -->
+    <!-- FRONTEND ICONS -->
+    @for (iconName of icons.frontend_icons.iconsName; track icons) {
+    <figure [style]="'--url:' + getIconURL(icons.frontend_icons.dirName, iconName)" [title]="replaceTrace(iconName)">
+    </figure>
+    }
+
+    <!-- BACKEND ICONS -->
+    @for (iconName of icons.backend_icons.iconsName; track icons) {
+    <figure [style]="'--url:' + getIconURL(icons.backend_icons.dirName, iconName)" [title]="replaceTrace(iconName)">
+    </figure>
+    }
+
+    <!-- DATABASE ICONS -->
+    @for (iconName of icons.db_icons.iconsName; track icons) {
+    <figure [style]="'--url:' + getIconURL(icons.db_icons.dirName, iconName)" [title]="replaceTrace(iconName)">
+    </figure>
+    }
+
+    <!-- API ICONS -->
+    @for (iconName of icons.api_icons.iconsName; track icons) {
+    <figure [style]="'--url:' + getIconURL(icons.api_icons.dirName, iconName)" [title]="replaceTrace(iconName)">
+    </figure>
+    }
+
+    <!-- UNIT TEST ICONS -->
+    @for (iconName of icons.test_icons.iconsName; track icons) {
+    <figure [style]="'--url:' + getIconURL(icons.test_icons.dirName, iconName)" [title]="replaceTrace(iconName)">
+    </figure>
+    }
+
+    <!-- TOOLS ICONS -->
+    @for (iconName of icons.tools_icons.iconsName; track icons) {
+    <figure [style]="'--url:' + getIconURL(icons.tools_icons.dirName, iconName)" [title]="replaceTrace(iconName)">
+    </figure>
+    }
+
+
+</section>

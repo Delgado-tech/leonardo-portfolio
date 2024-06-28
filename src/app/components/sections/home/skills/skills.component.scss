@@ -1,0 +1,30 @@
+@use "../../../../../scss/base" as base;
+
+@import "../../../../../scss/utils.scss";
+
+section {
+	@extend .container;
+	@include paddingY(12px);
+
+	display: flex;
+	flex-wrap: wrap;
+	gap: 32px;
+}
+
+figure {
+	$icon-url: var(--url);
+
+	-webkit-mask-image: $icon-url;
+	-webkit-mask-repeat: no-repeat;
+	mask-image: $icon-url;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	mask-position: center;
+
+	width: 64px;
+	height: 64px;
+	background-color: base.$gray-05;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
