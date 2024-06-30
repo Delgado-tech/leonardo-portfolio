@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import iconFileList from '../../../../../assets/icons/technology-icons-file-list/file-list.json';
 import { replaceTraceFunc } from '../../../../utils/replaceTrace';
 import { TooltipComponent } from '../../../tooltip/tooltip.component';
+import { technologyIcons } from '../../../../mocks/technology-icons.mockup';
 
 @Component({
 	selector: 'app-skills',
@@ -11,15 +11,15 @@ import { TooltipComponent } from '../../../tooltip/tooltip.component';
 	styleUrl: './skills.component.scss',
 })
 export class SkillsComponent {
-	private iconsSrc: string =
+	private iconSrc: string =
 		'../../../../../assets/icons/technologies/?dir/?icon.svg';
 
-	icons = iconFileList;
+	technologyIcons = technologyIcons;
 
 	replaceTrace: (text: string) => string = replaceTraceFunc;
 
 	getIconURL(iconDir: string, iconName: string): string {
-		return `url('${this.iconsSrc
+		return `url('${this.iconSrc
 			.replace('?dir', iconDir)
 			.replace('?icon', iconName)}');`;
 	}

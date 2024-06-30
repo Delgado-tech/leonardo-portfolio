@@ -25,6 +25,9 @@ export class TooltipComponent {
 	isTooltipCentrilized: boolean = false;
 	tooltipScrollObserver!: IObserverItem;
 
+	private readonly GAP = 10;
+	private readonly ARROW_SIZE = 8;
+
 	constructor(
 		@Inject(PLATFORM_ID)
 		private plataformId: any,
@@ -41,24 +44,17 @@ export class TooltipComponent {
 			'.tooltip_arrow_wrapper'
 		) as HTMLElement;
 		const tooltipArrow = tooltipArrowWrapper.children[0] as HTMLElement;
-
-		const contentDivRect = contentDiv.getBoundingClientRect();
-
-		const gap = 10;
-
+		
 		const onMouseEnter = () => {
 			tooltip.style.display = 'inherit';
-
+			
 			const tooltipRect = tooltip.getBoundingClientRect();
+			const contentDivRect = contentDiv.getBoundingClientRect();
 
 			const tooltipCenterOffset =
 				tooltipRect.width / 2 - contentDivRect.width / 2;
-
-			const tooltipArrowCenterOffset = tooltipCenterOffset; // 4px é o tamanho da metade da seta do tooltip
-
-			const tooltipArrowCenterContentOffset = contentDivRect.width / 2; // 4px é o tamanho da metade da seta do tooltip
-
-			console.log(tooltipArrowCenterContentOffset);
+			const tooltipArrowCenterOffset = tooltipCenterOffset + this.ARROW_SIZE; // 8px é o tamanho da seta do tooltip
+			const tooltipArrowCenterContentOffset = (contentDivRect.width / 2) - this.ARROW_SIZE; // 8px é o tamanho da seta do tooltip
 
 			if (
 				tooltipRect.left - tooltipCenterOffset > 0 &&
@@ -68,7 +64,7 @@ export class TooltipComponent {
 				tooltip.style.transform = `translateX(-${tooltipCenterOffset}px)`;
 				tooltipArrowWrapper.style.transform = `translateX(${tooltipArrowCenterOffset}px)`;
 				this.isTooltipCentrilized = true;
-			} else if (tooltipRect.left < 0 && this.isTooltipCentrilized) {
+			} else if ((tooltipRect.left < 0 && this.isTooltipCentrilized) || !this.isTooltipCentrilized) {
 				tooltip.style.transform = 'translateX(0)';
 				tooltipArrowWrapper.style.transform = `translateX(${tooltipArrowCenterContentOffset}px)`;
 				this.isTooltipCentrilized = false;
@@ -79,20 +75,12 @@ export class TooltipComponent {
 					contentDivRect.height + tooltipRect.height;
 
 				if (distanceBottom <= 0 && !this.isTooltipOnBottom) {
-					tooltip.style.top = `${contentDivRect.height + gap}px`;
-					tooltipArrow.style.rotate = '180deg';
-					tooltipArrowWrapper.style.bottom = 'auto';
-					tooltipArrowWrapper.style.top = '-4px';
-					this.isTooltipOnBottom = true;
+					this.placeTooltipBottom(tooltip, tooltipArrowWrapper, tooltipArrow, contentDiv)
 				} else if (
 					tooltipAndContentDivHeightArea - distanceBottom <= 0 &&
 					this.isTooltipOnBottom
 				) {
-					tooltip.style.top = `-${tooltipRect.height + gap}px`;
-					tooltipArrow.style.rotate = '0deg';
-					tooltipArrowWrapper.style.bottom = '-4px';
-					tooltipArrowWrapper.style.top = 'auto';
-					this.isTooltipOnBottom = false;
+					this.placeTooltipTop(tooltip, tooltipArrowWrapper, tooltipArrow);
 				}
 			};
 
@@ -115,4 +103,21 @@ export class TooltipComponent {
 		this.renderer.listen(contentDiv, 'mouseenter', onMouseEnter);
 		this.renderer.listen(contentDiv, 'mouseout', onMouseOut);
 	}
+
+	private placeTooltipTop(tooltip: HTMLElement, tooltipArrowWrapper: HTMLElement, tooltipArrow: HTMLElement) {
+		tooltip.style.top = `-${tooltip.getBoundingClientRect().height + this.GAP}px`;
+		tooltipArrow.style.rotate = '0deg';
+		tooltipArrowWrapper.style.bottom = `-${this.ARROW_SIZE / 2}px`;
+		tooltipArrowWrapper.style.top = 'auto';
+		this.isTooltipOnBottom = false;
+	}
+	
+	private placeTooltipBottom(tooltip: HTMLElement, tooltipArrowWrapper: HTMLElement, tooltipArrow: HTMLElement, contentDiv: HTMLElement) {
+		tooltip.style.top = `${contentDiv.getBoundingClientRect().height + this.GAP}px`;
+		tooltipArrow.style.rotate = '180deg';
+		tooltipArrowWrapper.style.bottom = 'auto';
+		tooltipArrowWrapper.style.top = `-${this.ARROW_SIZE / 2}px`;
+		this.isTooltipOnBottom = true;
+	}
+	
 }
