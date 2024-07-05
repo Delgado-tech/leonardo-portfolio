@@ -1,16 +1,11 @@
 <section>
-	<app-tooltip>
-		<p>Test</p>
-	</app-tooltip>
-
-	<!-- TODO: fazer um mock com todos os icones de tecnologias, os icones serão utilizados como um mask para um quadrado 32x32 que contera a cor ou gradiente escolhido -->
 	@for (category of technologyIcons; track category) {
 	<div [className]="category.categoryName">
 		@for (icon of category.iconList; track icon) {
-		<figure
-			[style]="'--url:' + getIconURL(category.dirName, icon.fileName)"
-			[title]="icon.displayName"
-		></figure>
+		<app-tooltip [tooltip-content]="getTooltipContent(icon.displayName, icon.subDisplay, icon.comment)">
+			<figure [style]="'--url:' + getIconURL(category.dirName, icon.fileName)">
+			</figure>
+		</app-tooltip>
 		}
 	</div>
 	}

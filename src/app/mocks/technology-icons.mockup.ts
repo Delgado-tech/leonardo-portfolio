@@ -19,20 +19,20 @@ export const technologyIcons: IIconCategory[] = [
 			{
 				fileName: 'express',
 				displayName: 'Express',
-				subDisplay: 'Framework Node.js',
-				comment: 'Utilizado por empresas como Uber e IBM.',
+				subDisplay: 'framework node.js',
+				comment: 'ferramenta utilizada por empresas como Uber e IBM.',
 			},
 			{
 				fileName: 'nestjs',
 				displayName: 'NestJS',
-				subDisplay: 'Framework Node.js',
+				subDisplay: 'framework node.js',
 				comment:
-					'Utilizado em soluções empresariais por empresas como Citi e Siemens.',
+					'ferramenta utilizada em soluções empresariais por empresas como Citi e Siemens.',
 			},
 			{
 				fileName: 'prisma',
 				displayName: 'Prisma',
-				subDisplay: 'Kit de ferramentas de banco de dados',
+				subDisplay: 'kit de ferramentas de banco de dados',
 			},
 		],
 	},
@@ -43,35 +43,35 @@ export const technologyIcons: IIconCategory[] = [
 			{
 				fileName: 'nodejs',
 				displayName: 'NodeJS',
-				subDisplay: 'Ambiente de execução JavaScript',
-				comment: 'Usado em aplicações por empresas como Netflix e LinkedIn.',
+				subDisplay: 'ambiente de execução javascript',
+				comment: 'usado em aplicações por empresas como Netflix e LinkedIn.',
 			},
 			{
 				fileName: 'java',
 				displayName: 'Java',
-				subDisplay: 'Linguagem de programação',
+				subDisplay: 'linguagem de programação',
 				comment:
-					'Amplamente utilizado em aplicações empresariais por empresas como Google e Amazon.',
+					'ferramenta amplamente utilizada em aplicações empresariais por empresas como Google e Amazon.',
 			},
 			{
 				fileName: 'php',
 				displayName: 'PHP',
-				subDisplay: 'Linguagem de programação',
+				subDisplay: 'linguagem de programação',
 			},
 			{
 				fileName: 'csharp',
-				displayName: 'CSharp',
-				subDisplay: 'Linguagem de programação',
+				displayName: 'C#',
+				subDisplay: 'linguagem de programação',
 			},
 			{
 				fileName: 'python',
 				displayName: 'Python',
-				subDisplay: 'Linguagem de programação',
+				subDisplay: 'linguagem de programação',
 			},
 			{
 				fileName: 'springbot',
 				displayName: 'Spring Bot',
-				subDisplay: 'Framework Java',
+				subDisplay: 'framework java',
 			},
 		],
 	},
@@ -82,21 +82,21 @@ export const technologyIcons: IIconCategory[] = [
 			{
 				fileName: 'mysql',
 				displayName: 'MySQL',
-				subDisplay: 'Sistema de banco de dados',
+				subDisplay: 'sistema de banco de dados',
 				comment:
-					'Usado em aplicações web escaláveis por empresas como Facebook e Twitter.',
+					'usado em aplicações web escaláveis por empresas como Facebook e Twitter.',
 			},
 			{
 				fileName: 'postgresql',
 				displayName: 'PostgreSQL',
-				subDisplay: 'Sistema de banco de dados',
+				subDisplay: 'sistema de banco de dados',
 			},
 			{
 				fileName: 'mongodb',
 				displayName: 'MongoDB',
-				subDisplay: 'Banco de dados NoSQL',
+				subDisplay: 'banco de dados no-sql',
 				comment:
-					'Utilizado em soluções de big data por empresas como Adobe e eBay.',
+					'utilizado em soluções de big data por empresas como Adobe e eBay.',
 			},
 		],
 	},
@@ -107,54 +107,56 @@ export const technologyIcons: IIconCategory[] = [
 			{
 				fileName: 'html',
 				displayName: 'HTML',
-				subDisplay: 'Linguagem de marcação',
+				subDisplay: 'linguagem de marcação',
 			},
 			{
 				fileName: 'css',
 				displayName: 'CSS',
-				subDisplay: 'Linguagem de estilização',
+				subDisplay: 'linguagem de estilização',
 			},
 			{
 				fileName: 'javascript',
 				displayName: 'JavaScript',
-				subDisplay: 'Linguagem de programação',
+				subDisplay: 'linguagem de programação',
 			},
 			{
 				fileName: 'typescript',
 				displayName: 'TypeScript',
-				subDisplay: 'Linguagem de programação',
+				subDisplay: 'linguagem de programação',
 			},
 			{
 				fileName: 'angular',
 				displayName: 'Angular',
-				subDisplay: 'Framework front-end',
+				subDisplay: 'framework front-end',
+				comment:
+					'ferramenta amplamente utilizada em aplicações por empresas como Google e Microsoft.',
 			},
 			{
 				fileName: 'react',
 				displayName: 'React',
-				subDisplay: 'Biblioteca JavaScript',
+				subDisplay: 'biblioteca javascript',
 				comment:
-					'Amplamente utilizado em aplicações por empresas como Facebook e Airbnb.',
+					'ferramenta amplamente utilizada em aplicações por empresas como Facebook e Airbnb.',
 			},
 			{
 				fileName: 'react-router-dom',
 				displayName: 'React Router DOM',
-				subDisplay: 'Biblioteca React',
+				subDisplay: 'biblioteca react',
 			},
 			{
 				fileName: 'nextjs',
 				displayName: 'NextJS',
-				subDisplay: 'Framework React',
+				subDisplay: 'framework react',
 			},
 			{
 				fileName: 'tailwind',
 				displayName: 'Tailwind',
-				subDisplay: 'Framework CSS',
+				subDisplay: 'framework de estilização css',
 			},
 			{
 				fileName: 'sass',
 				displayName: 'SASS',
-				subDisplay: 'Linguagem de extensão CSS',
+				subDisplay: 'linguagem de extensão css',
 			},
 		],
 	},
@@ -165,7 +167,7 @@ export const technologyIcons: IIconCategory[] = [
 			{
 				fileName: 'jest',
 				displayName: 'Jest',
-				subDisplay: 'Framework de testes JavaScript',
+				subDisplay: 'framework de testes unitários',
 			},
 		],
 	},
@@ -176,38 +178,38 @@ export const technologyIcons: IIconCategory[] = [
 			{
 				fileName: 'aws',
 				displayName: 'AWS',
-				subDisplay: 'Plataforma de nuvem',
+				subDisplay: 'plataforma de nuvem',
 				comment:
-					'Utilizado para computação em nuvem por empresas como Netflix e Airbnb.',
+					'utilizado para computação em nuvem por empresas como Netflix e Airbnb.',
 			},
 			{
 				fileName: 'git',
 				displayName: 'Git',
-				subDisplay: 'Sistema de controle de versão',
+				subDisplay: 'sistema de controle de versão',
 			},
 			{
 				fileName: 'github',
 				displayName: 'GitHub',
-				subDisplay: 'Hospedagem de repositórios Git',
+				subDisplay: 'hospedagem de repositórios Git',
 				comment:
-					'Hospeda milhões de repositórios, incluindo aqueles de empresas como Google e Microsoft.',
+					'hospeda milhões de repositórios, incluindo aqueles de empresas como Google e Microsoft.',
 			},
 			{
 				fileName: 'figma',
 				displayName: 'Figma',
-				subDisplay: 'Ferramenta de design',
+				subDisplay: 'ferramenta de design',
 			},
 			{
 				fileName: 'docker',
 				displayName: 'Docker',
-				subDisplay: 'Plataforma de containerização',
+				subDisplay: 'plataforma de containerização',
 				comment:
-					'Usado para implantação de containers por empresas como Spotify e Shopify.',
+					'usado para implantação de containers por empresas como Spotify e Shopify.',
 			},
 			{
 				fileName: 'canva',
 				displayName: 'Canva',
-				subDisplay: 'Ferramenta de design gráfico',
+				subDisplay: 'ferramenta de design gráfico',
 			},
 		],
 	},
