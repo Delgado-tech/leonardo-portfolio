@@ -7,38 +7,16 @@ interface IIconList {
 
 interface IIconCategory {
 	categoryName: string;
+	categoryAlternativeName: string;
 	dirName: string;
 	iconList: IIconList[];
 }
 
 export const technologyIcons: IIconCategory[] = [
 	{
-		categoryName: 'api',
-		dirName: 'api_icons',
-		iconList: [
-			{
-				fileName: 'express',
-				displayName: 'Express',
-				subDisplay: 'framework node.js',
-				comment: 'ferramenta utilizada por empresas como Uber e IBM.',
-			},
-			{
-				fileName: 'nestjs',
-				displayName: 'NestJS',
-				subDisplay: 'framework node.js',
-				comment:
-					'ferramenta utilizada em soluções empresariais por empresas como Citi e Siemens.',
-			},
-			{
-				fileName: 'prisma',
-				displayName: 'Prisma',
-				subDisplay: 'kit de ferramentas de banco de dados',
-			},
-		],
-	},
-	{
-		categoryName: 'backend',
-		dirName: 'backend_icons',
+		categoryName: 'stack',
+		categoryAlternativeName: 'stack utilizada',
+		dirName: 'stack_icons',
 		iconList: [
 			{
 				fileName: 'nodejs',
@@ -47,44 +25,26 @@ export const technologyIcons: IIconCategory[] = [
 				comment: 'usado em aplicações por empresas como Netflix e LinkedIn.',
 			},
 			{
-				fileName: 'java',
-				displayName: 'Java',
-				subDisplay: 'linguagem de programação',
+				fileName: 'react',
+				displayName: 'React',
+				subDisplay: 'biblioteca javascript',
 				comment:
-					'ferramenta amplamente utilizada em aplicações empresariais por empresas como Google e Amazon.',
+					'ferramenta amplamente utilizada em aplicações por empresas como Facebook e Airbnb.',
 			},
 			{
-				fileName: 'php',
-				displayName: 'PHP',
+				fileName: 'nextjs',
+				displayName: 'NextJS',
+				subDisplay: 'framework react',
+			},
+			{
+				fileName: 'typescript',
+				displayName: 'TypeScript',
 				subDisplay: 'linguagem de programação',
 			},
 			{
-				fileName: 'csharp',
-				displayName: 'C#',
-				subDisplay: 'linguagem de programação',
-			},
-			{
-				fileName: 'python',
-				displayName: 'Python',
-				subDisplay: 'linguagem de programação',
-			},
-			{
-				fileName: 'springbot',
-				displayName: 'Spring Bot',
-				subDisplay: 'framework java',
-			},
-		],
-	},
-	{
-		categoryName: 'database',
-		dirName: 'db_icons',
-		iconList: [
-			{
-				fileName: 'mysql',
-				displayName: 'MySQL',
-				subDisplay: 'sistema de banco de dados',
-				comment:
-					'usado em aplicações web escaláveis por empresas como Facebook e Twitter.',
+				fileName: 'tailwind',
+				displayName: 'Tailwind',
+				subDisplay: 'framework de estilização css',
 			},
 			{
 				fileName: 'postgresql',
@@ -92,16 +52,26 @@ export const technologyIcons: IIconCategory[] = [
 				subDisplay: 'sistema de banco de dados',
 			},
 			{
-				fileName: 'mongodb',
-				displayName: 'MongoDB',
-				subDisplay: 'banco de dados no-sql',
-				comment:
-					'utilizado em soluções de big data por empresas como Adobe e eBay.',
+				fileName: 'express',
+				displayName: 'Express',
+				subDisplay: 'framework node.js',
+				comment: 'ferramenta utilizada por empresas como Uber e IBM.',
+			},
+			{
+				fileName: 'prisma',
+				displayName: 'Prisma',
+				subDisplay: 'kit de ferramentas de banco de dados',
+			},
+			{
+				fileName: 'jest',
+				displayName: 'Jest',
+				subDisplay: 'framework de testes unitários',
 			},
 		],
 	},
 	{
 		categoryName: 'frontend',
+		categoryAlternativeName: 'frontend',
 		dirName: 'frontend_icons',
 		iconList: [
 			{
@@ -161,7 +131,99 @@ export const technologyIcons: IIconCategory[] = [
 		],
 	},
 	{
+		categoryName: 'backend',
+		categoryAlternativeName: 'backend',
+		dirName: 'backend_icons',
+		iconList: [
+			{
+				fileName: 'nodejs',
+				displayName: 'NodeJS',
+				subDisplay: 'ambiente de execução javascript',
+				comment: 'usado em aplicações por empresas como Netflix e LinkedIn.',
+			},
+			{
+				fileName: 'java',
+				displayName: 'Java',
+				subDisplay: 'linguagem de programação',
+				comment:
+					'ferramenta amplamente utilizada em aplicações empresariais por empresas como Google e Amazon.',
+			},
+			{
+				fileName: 'php',
+				displayName: 'PHP',
+				subDisplay: 'linguagem de programação',
+			},
+			{
+				fileName: 'csharp',
+				displayName: 'C#',
+				subDisplay: 'linguagem de programação',
+			},
+			{
+				fileName: 'python',
+				displayName: 'Python',
+				subDisplay: 'linguagem de programação',
+			},
+			{
+				fileName: 'springbot',
+				displayName: 'Spring Bot',
+				subDisplay: 'framework java',
+			},
+		],
+	},
+	{
+		categoryName: 'database',
+		categoryAlternativeName: 'banco de dados',
+		dirName: 'db_icons',
+		iconList: [
+			{
+				fileName: 'mysql',
+				displayName: 'MySQL',
+				subDisplay: 'sistema de banco de dados',
+				comment:
+					'usado em aplicações web escaláveis por empresas como Facebook e Twitter.',
+			},
+			{
+				fileName: 'postgresql',
+				displayName: 'PostgreSQL',
+				subDisplay: 'sistema de banco de dados',
+			},
+			{
+				fileName: 'mongodb',
+				displayName: 'MongoDB',
+				subDisplay: 'banco de dados no-sql',
+				comment:
+					'utilizado em soluções de big data por empresas como Adobe e eBay.',
+			},
+		],
+	},
+	{
+		categoryName: 'api',
+		categoryAlternativeName: 'api',
+		dirName: 'api_icons',
+		iconList: [
+			{
+				fileName: 'express',
+				displayName: 'Express',
+				subDisplay: 'framework node.js',
+				comment: 'ferramenta utilizada por empresas como Uber e IBM.',
+			},
+			{
+				fileName: 'nestjs',
+				displayName: 'NestJS',
+				subDisplay: 'framework node.js',
+				comment:
+					'ferramenta utilizada em soluções empresariais por empresas como Citi e Siemens.',
+			},
+			{
+				fileName: 'prisma',
+				displayName: 'Prisma',
+				subDisplay: 'kit de ferramentas de banco de dados',
+			},
+		],
+	},
+	{
 		categoryName: 'tests',
+		categoryAlternativeName: 'testes',
 		dirName: 'test_icons',
 		iconList: [
 			{
@@ -173,6 +235,7 @@ export const technologyIcons: IIconCategory[] = [
 	},
 	{
 		categoryName: 'tools',
+		categoryAlternativeName: 'ferramentas',
 		dirName: 'tools_icons',
 		iconList: [
 			{
