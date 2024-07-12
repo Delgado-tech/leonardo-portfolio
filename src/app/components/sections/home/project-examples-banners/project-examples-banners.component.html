@@ -1,0 +1,18 @@
+<section>
+    <span class="fade fade_top"></span>
+    <p class="focus_text">suas ideis<br />ganham vida aqui<span>.</span></p>
+    <div class="sliders_container">
+        @for (slider of bannerSliders; track slider) {
+        <app-content-slider [scroll-change-direction]="true" [reverse]="slider.reverse">
+            <div class="banner_slider_container">
+                <div class="wrapper">
+                    @for (slide of slider.slides; track slide) {
+                    <figure [style]="'--url:'"></figure>
+                    }
+                </div>
+            </div>
+        </app-content-slider>
+        }
+    </div>
+    <span class="fade fade_bottom"></span>
+</section>

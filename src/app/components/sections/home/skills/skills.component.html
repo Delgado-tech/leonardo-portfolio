@@ -1,12 +1,17 @@
 <section>
-	@for (category of technologyIcons; track category) {
-	<div [className]="category.categoryName">
-		@for (icon of category.iconList; track icon) {
-		<app-tooltip [tooltip-content]="getTooltipContent(icon.displayName, icon.subDisplay, icon.comment)">
-			<figure [style]="'--url:' + getIconURL(category.dirName, icon.fileName)">
-			</figure>
-		</app-tooltip>
+	<h2 class="title">Tecnologias</h2>
+
+	<div class="technologies_container">
+		@for (category of technologyIcons; track category) {
+		<div [className]="category.categoryName">
+			<span [innerText]="category.categoryAlternativeName" class="category_name"></span>
+			@for (icon of category.iconList; track icon) {
+			<app-tooltip [tooltip-content]="getTooltipContent(icon.displayName, icon.subDisplay, icon.comment)">
+				<figure [style]="'--url:' + getIconURL(category.dirName, icon.fileName)">
+				</figure>
+			</app-tooltip>
+			}
+		</div>
 		}
 	</div>
-	}
 </section>
