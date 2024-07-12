@@ -50,54 +50,33 @@ export class TooltipComponent {
 		const tooltipArrow = tooltipArrowWrapper.children[0] as HTMLElement;
 
 		const onMouseEnter = () => {
-			tooltip.style.display = 'inherit';
+			tooltip.style.display = 'block';
 
 			const tooltipRect = tooltip.getBoundingClientRect();
 			const contentDivRect = contentDiv.getBoundingClientRect();
 
 			const tooltipCenterOffset =
 				tooltipRect.width / 2 - contentDivRect.width / 2;
-			const tooltipArrowCenterOffset = tooltipRect.width / 2 - this.ARROW_SIZE; // 8px é o tamanho da seta do tooltip
+			const tooltipArrowCenterOffset = tooltipRect.width / 2 - this.ARROW_SIZE;
 			const tooltipArrowCenterContentOffset =
-				contentDivRect.width / 2 - this.ARROW_SIZE; // 8px é o tamanho da seta do tooltip
+				contentDivRect.width / 2 - this.ARROW_SIZE;
 
-			if (
-				tooltipRect.left - tooltipCenterOffset > 0 &&
-				!this.isTooltipCentrilized
-			) {
-				// centralizar tooltip no elemento
-				tooltip.style.transform = `translateX(-${tooltipCenterOffset}px)`;
-				tooltip.style.right = 'auto';
-				tooltipArrowWrapper.style.transform = `translateX(${tooltipArrowCenterOffset}px)`;
-				tooltipArrowWrapper.style.left = `0`;
-				tooltipArrowWrapper.style.right = `auto`;
-				this.isTooltipCentrilized = true;
-			} else if (
-				(tooltipRect.left < 0 && this.isTooltipCentrilized) ||
-				!this.isTooltipCentrilized
-			) {
-				tooltip.style.transform = 'translateX(0)';
-				tooltip.style.right = 'auto';
-				tooltipArrowWrapper.style.transform = `translateX(${tooltipArrowCenterContentOffset}px)`;
-				tooltipArrowWrapper.style.left = `0`;
-				tooltipArrowWrapper.style.right = `auto`;
-				this.isTooltipCentrilized = false;
-			}
+			const tooltipDistanceBottom = tooltipRect.bottom - tooltipRect.height;
 
-			const tooltipDistanceLeftEnd =
-				tooltip.getBoundingClientRect().width +
-				tooltip.getBoundingClientRect().left;
+			const setTooltipAxisX = (
+				translateTooltip: number,
+				translateTooltipArrow: number,
+				placeRight: boolean = false
+			) => {
+				const left = placeRight ? 'auto' : '0';
+				const right = placeRight ? '0' : 'auto';
 
-			if (
-				(window.innerWidth ?? 0) - tooltipDistanceLeftEnd < 0 &&
-				this.isTooltipCentrilized
-			) {
-				tooltip.style.transform = 'translateX(0)';
-				tooltip.style.right = '0';
-				tooltipArrowWrapper.style.transform = `translateX(-${tooltipArrowCenterContentOffset}px)`;
-				tooltipArrowWrapper.style.left = `auto`;
-				tooltipArrowWrapper.style.right = `0`;
-			}
+				tooltip.style.transform = `translateX(${translateTooltip}px)`;
+				tooltip.style.right = right;
+				tooltipArrowWrapper.style.transform = `translateX(${translateTooltipArrow}px)`;
+				tooltipArrowWrapper.style.left = left;
+				tooltipArrowWrapper.style.right = right;
+			};
 
 			const setTooltipAxisY = (distanceBottom: number) => {
 				const tooltipAndContentDivHeightArea =
@@ -118,8 +97,33 @@ export class TooltipComponent {
 				}
 			};
 
-			const tooltipDistanceBottom = tooltipRect.bottom - tooltipRect.height;
 			setTooltipAxisY(tooltipDistanceBottom);
+
+			if (
+				tooltipRect.left - tooltipCenterOffset > 0 &&
+				!this.isTooltipCentrilized
+			) {
+				// centralizar tooltip no elemento
+				setTooltipAxisX(-tooltipCenterOffset, tooltipArrowCenterOffset);
+				this.isTooltipCentrilized = true;
+			} else if (
+				(tooltipRect.left < 0 && this.isTooltipCentrilized) ||
+				!this.isTooltipCentrilized
+			) {
+				setTooltipAxisX(0, tooltipArrowCenterContentOffset);
+				this.isTooltipCentrilized = false;
+			}
+
+			const tooltipDistanceLeftEnd =
+				tooltip.getBoundingClientRect().width +
+				tooltip.getBoundingClientRect().left;
+
+			if (
+				(window.innerWidth ?? 0) - tooltipDistanceLeftEnd < 0 &&
+				this.isTooltipCentrilized
+			) {
+				setTooltipAxisX(0, -tooltipArrowCenterContentOffset, true);
+			}
 
 			this.tooltipScrollObserver = this.scrollObserver.registerObserver({
 				HTMLElement: this.tooltipRef,
@@ -129,14 +133,12 @@ export class TooltipComponent {
 			});
 		};
 
-		const onMouseOut = () => {
+		const onMouseLeave = () => {
 			this.scrollObserver.unregisterObserver(this.tooltipScrollObserver);
 			tooltip.style.display = 'none';
 		};
 
-		this.renderer.listen(contentDiv, 'mouseenter', onMouseEnter);
-		this.renderer.listen(contentDiv, 'mouseout', onMouseOut);
-		this.renderer.listen('window', 'resize', () => {
+		const onResize = () => {
 			const tooltipDistanceLeftEnd =
 				tooltip.getBoundingClientRect().width +
 				tooltip.getBoundingClientRect().left;
@@ -149,7 +151,11 @@ export class TooltipComponent {
 				tooltip.style.right = 'auto';
 				this.isTooltipCentrilized = false;
 			}
-		});
+		};
+
+		this.renderer.listen(contentDiv, 'mouseenter', onMouseEnter);
+		this.renderer.listen(contentDiv, 'mouseleave', onMouseLeave);
+		this.renderer.listen('window', 'resize', onResize);
 	}
 
 	private placeTooltipTop(
