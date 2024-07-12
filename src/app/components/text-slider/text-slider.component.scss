@@ -3,12 +3,6 @@
 $gap: 80px;
 
 .text_slider {
-	&:root {
-		--animation_duration: 20s;
-		--animation_direction: normal;
-		--animation_play_state: running;
-	}
-
 	background-color: base.$gray-06;
 	color: base.$gray-01;
 
