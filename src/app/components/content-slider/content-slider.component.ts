@@ -22,6 +22,7 @@ export class ContentSliderComponent {
 	@Input('scroll-change-direction') scrollChangeDirection?: boolean;
 	@Input('use-scroll-acceleration') scrollAcceleration?: boolean;
 	@Input('animation-duration') duration?: number;
+	@Input('reverse') reverse?: boolean;
 
 	@ViewChild('container') containerRef!: ElementRef<HTMLDivElement>;
 
@@ -38,13 +39,20 @@ export class ContentSliderComponent {
 				const interval = setInterval(() => {
 					if (!this.wrapperElements) return;
 
+					let start = -50,
+						end = 0;
+
+					if (this.reverse) {
+						[start, end] = [end, start];
+					}
+
 					this.animationService.createAnimationGroup({
 						HTMLElements: this.wrapperElements,
 						animations: [
 							{
 								style: 'translate',
-								start: 0,
-								end: -50,
+								start,
+								end,
 								scrollChangeDirection: this.scrollChangeDirection,
 								scrollAcceleration: this.scrollAcceleration,
 								infinite: true,
