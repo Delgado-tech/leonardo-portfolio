@@ -10,16 +10,20 @@ import {
 import { RouterLink } from '@angular/router';
 import { ScrollObserverService } from '../../services/scroll-observer/scroll-observer.service';
 import { preventAnimationWhenPageLoad } from '../../utils/preventAnimationWhenPageLoad';
+import { socialLinks } from '../../utils/socialLinks';
+import { TextLinkComponent } from '../text-link/text-link.component';
 
 @Component({
 	selector: 'app-header',
 	standalone: true,
-	imports: [RouterLink],
+	imports: [RouterLink, TextLinkComponent],
 	templateUrl: './header.component.html',
 	styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
 	@ViewChild('header') headerRef!: ElementRef<HTMLElement>;
+
+	social = socialLinks;
 
 	showHamburgerMenu = false;
 	isHamburgerMenuOpen = false;

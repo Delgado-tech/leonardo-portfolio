@@ -173,17 +173,6 @@ header {
 	.external_link_routes {
 		display: flex;
 		flex-direction: row;
-
-		li:hover {
-			text-decoration: underline;
-			text-underline-offset: 10px;
-			color: base.$primary-light;
-			transition: 0.3s ease;
-		}
-
-		li a {
-			font-size: base.$text-base;
-		}
 	}
 }
 
@@ -382,12 +371,6 @@ header[data-show-hamburger-menu="true"] {
 
 		ul li a {
 			font-size: base.$text-3xl;
-		}
-
-		.external_link_routes {
-			li a {
-				font-size: base.$text-sm;
-			}
 		}
 	}
 }
