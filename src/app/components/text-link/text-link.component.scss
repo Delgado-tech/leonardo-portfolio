@@ -1,0 +1,30 @@
+@use "../../../scss/base" as base;
+
+a {
+	position: relative;
+
+	span {
+		font-weight: 500;
+		color: base.$gray-03;
+	}
+
+	.text_link_trace {
+		position: absolute;
+		bottom: -1px;
+
+		width: 0%;
+		height: 1px;
+
+		background-color: base.$gray-03;
+		transition: 0.2s ease-in;
+	}
+
+	&:hover span {
+		color: base.$primary-light;
+	}
+
+	&:hover .text_link_trace {
+		width: 100%;
+		background-color: base.$primary-light;
+	}
+}
