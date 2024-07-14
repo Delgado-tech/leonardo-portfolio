@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-type ButtonColorType = 'primary' | 'gray';
+type ButtonColorType = 'primary' | 'primary_gradient' | 'gray' | 'lightgray';
 type AnchorTargetType = '_self' | '_blank';
 
 @Component({

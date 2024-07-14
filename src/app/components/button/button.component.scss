@@ -31,6 +31,11 @@ button {
 		border-color: base.$primary;
 	}
 
+	&.primary_gradient {
+		color: base.$gradient-primary;
+		background: base.$gradient-primary;
+	}
+
 	&.gray {
 		color: base.$gray-06;
 		background-color: base.$gray-06;
@@ -41,11 +46,19 @@ button {
 		}
 	}
 
+	&.lightgray {
+		color: base.$gray-03;
+		background-color: base.$gray-03;
+		border-color: base.$gray-03;
+	}
+
 	&:not(.bordered) {
 		color: white;
+		border-color: transparent;
 	}
 
 	&.bordered {
 		background-color: transparent;
+		background: transparent;
 	}
 }
