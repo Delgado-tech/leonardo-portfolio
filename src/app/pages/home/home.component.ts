@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../../components/button/button.component';
+import { ContactFooterComponent } from '../../components/contact-footer/contact-footer.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { AboutMeComponent } from '../../components/sections/home/about-me/about-me.component';
 import { HomeIntroductionComponent } from '../../components/sections/home/home-introduction/home-introduction.component';
@@ -16,6 +17,7 @@ import { SkillsComponent } from '../../components/sections/home/skills/skills.co
 		ProjectExamplesBannersComponent,
 		AboutMeComponent,
 		SkillsComponent,
+		ContactFooterComponent,
 	],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss',
