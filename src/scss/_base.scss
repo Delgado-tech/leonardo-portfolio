@@ -17,6 +17,12 @@ $translucent: rgba(203, 204, 206, 0.1);
 $gradient-primary: linear-gradient(to right, $primary, $primary-light);
 $gradient-primary-highlight: linear-gradient(to right, #9795ef, $primary);
 $gradient-gray: linear-gradient(to right, $gray-04, $gray-03);
+$gradient-gray-center: linear-gradient(
+	to right,
+	transparent,
+	$gray-03 50%,
+	transparent
+);
 
 // --- FONT-SIZE
 
