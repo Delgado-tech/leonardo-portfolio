@@ -50,7 +50,8 @@ export class ContentSliderComponent {
 						HTMLElements: this.wrapperElements,
 						animations: [
 							{
-								style: 'translate',
+								style: 'transform',
+								styleValueMask: 'translate(???)',
 								start,
 								end,
 								scrollChangeDirection: this.scrollChangeDirection,

@@ -3,12 +3,10 @@ import {
 	Component,
 	ElementRef,
 	Inject,
-	Input,
 	PLATFORM_ID,
 	Renderer2,
 	ViewChild,
 } from '@angular/core';
-import { SafeHtml } from '@angular/platform-browser';
 import { ScrollObserverService } from '../../services/scroll-observer/scroll-observer.service';
 import { IObserverItem } from '../../services/scroll-observer/scroll-observer.service.interfaces';
 
@@ -20,8 +18,6 @@ import { IObserverItem } from '../../services/scroll-observer/scroll-observer.se
 	styleUrl: './tooltip.component.scss',
 })
 export class TooltipComponent {
-	@Input('tooltip-content') tooltipContent!: SafeHtml;
-
 	@ViewChild('ContentDiv') contentDivRef!: ElementRef<HTMLElement>;
 	@ViewChild('Tooltip') tooltipRef!: ElementRef<HTMLElement>;
 

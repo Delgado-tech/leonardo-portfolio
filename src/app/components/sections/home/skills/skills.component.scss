@@ -52,7 +52,7 @@ section {
 	max-width: 1200px;
 	gap: 32px;
 
-	div {
+	.technologies_wrapper {
 		background-color: base.$gray-contrast;
 		padding: 20px;
 
@@ -99,12 +99,37 @@ section {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		transition: 0.3s;
+		transition: 0.2s ease-in;
 
 		&:hover {
 			background-color: base.$primary;
 			transform: scale(105%);
 			cursor: none;
+		}
+	}
+
+	.tooltip {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		min-width: 200px;
+
+		div {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+		}
+
+		&_title {
+			font-weight: 500;
+		}
+
+		&_subtitle {
+			color: gray;
+		}
+
+		&_text {
+			color: #bbbbbb;
 		}
 	}
 

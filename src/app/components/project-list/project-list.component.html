@@ -1,0 +1,21 @@
+<section #Container>
+    <h3>Projetos em Destaque</h3>
+    <div class="project_banner" #Banner>
+        @for (project of projectList; track project) {
+        <figure>
+            <img [src]="'../../../assets/project-banners/' + project.bannerFileName"
+                [alt]="'website ' + project.title" />
+        </figure>
+        }
+    </div>
+    <table #Table>
+        <tbody>
+            @for (project of projectList; track project) {
+            <tr>
+                <td>{{project.title}}</td>
+                <td>{{project.createdDate.getFullYear()}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</section>

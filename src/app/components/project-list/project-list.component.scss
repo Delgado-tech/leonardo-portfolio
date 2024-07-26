@@ -1,0 +1,109 @@
+@use "../../../scss/base" as base;
+
+@import "../../../scss/utils.scss";
+
+section {
+	@include paddingY(200px, 150px);
+	@extend .container;
+}
+
+h3 {
+	color: base.$primary;
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+	margin-bottom: 16px;
+}
+
+table,
+td {
+	border: 1px solid base.$gray-03;
+	border-left: 1px;
+	border-right: 1px;
+	border-collapse: collapse;
+}
+
+table {
+	width: 100%;
+
+	tr {
+		transition: 0.2s ease-in-out;
+		cursor: pointer;
+	}
+
+	tr:hover {
+		transform: scale(105%);
+		filter: brightness(250%);
+	}
+
+	td {
+		padding: 60px;
+		font-family: "Poppins", sans-serif;
+	}
+
+	td:nth-child(1) {
+		// nome do projeto
+		width: 70%;
+
+		color: base.$gray-06;
+		font-size: base.$text-xl;
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+
+	td:last-child {
+		text-align: end;
+		color: base.$gray-05;
+		font-weight: 500;
+		font-size: base.$text-lg;
+	}
+}
+
+.project_banner {
+	$banner_size: 400px;
+
+	@include size($banner_size);
+	overflow-y: auto;
+	scroll-behavior: smooth;
+
+	position: absolute;
+
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+
+	scale: 0%;
+	rotate: -45deg;
+	opacity: 70%;
+	transform: translate(-50%, -50%);
+	transform-origin: left top;
+	transition: scale 0.4s ease, rotate 0.3s ease, opacity 0.2s ease;
+
+	top: 0;
+	left: 0;
+
+	pointer-events: none;
+	z-index: 50;
+
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
+	&_show {
+		scale: 100%;
+		opacity: 99%;
+		rotate: 0deg;
+	}
+
+	figure {
+		background-color: #1a1a1a;
+	}
+
+	img {
+		object-fit: contain;
+		object-position: center;
+		width: 100%;
+		height: $banner_size;
+	}
+}
