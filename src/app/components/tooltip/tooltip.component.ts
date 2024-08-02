@@ -7,7 +7,6 @@ import {
 	Renderer2,
 	ViewChild,
 } from '@angular/core';
-import { ScrollObserverService } from '../../services/scroll-observer/scroll-observer.service';
 import { IObserverItem } from '../../services/scroll-observer/scroll-observer.service.interfaces';
 
 @Component({
@@ -31,8 +30,7 @@ export class TooltipComponent {
 	constructor(
 		@Inject(PLATFORM_ID)
 		private plataformId: any,
-		private renderer: Renderer2,
-		private scrollObserver: ScrollObserverService
+		private renderer: Renderer2
 	) {}
 
 	ngAfterViewInit() {
@@ -120,17 +118,9 @@ export class TooltipComponent {
 			) {
 				setTooltipAxisX(0, -tooltipArrowCenterContentOffset, true);
 			}
-
-			this.tooltipScrollObserver = this.scrollObserver.registerObserver({
-				HTMLElement: this.tooltipRef,
-				handler: (props) => {
-					setTooltipAxisY(props.element.distanceBottom);
-				},
-			});
 		};
 
 		const onMouseLeave = () => {
-			this.scrollObserver.unregisterObserver(this.tooltipScrollObserver);
 			tooltip.style.display = 'none';
 		};
 
