@@ -38,6 +38,7 @@ table {
 	td {
 		padding: 60px;
 		font-family: "Poppins", sans-serif;
+		user-select: none;
 	}
 
 	td:nth-child(1) {
@@ -65,7 +66,7 @@ table {
 	overflow-y: auto;
 	scroll-behavior: smooth;
 
-	position: absolute;
+	position: fixed;
 
 	display: flex;
 	flex-direction: column;

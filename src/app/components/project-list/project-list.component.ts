@@ -36,42 +36,66 @@ export class ProjectListComponent {
 	ngAfterViewInit(): void {
 		if (isPlatformServer(this.platform_id)) return;
 
-		this.renderer.listen(
-			this.containerRef.nativeElement,
-			'mousemove',
-			(event: MouseEvent) => {
-				const bannerContainer = this.bannerContainerRef.nativeElement;
-				const table = this.tableRef.nativeElement;
-				const tbody = table.children[0];
-				const [posX, posY] = [event.pageX, event.pageY];
-				const target = (event.target as HTMLElement)
-					.offsetParent as HTMLElement;
+		const table = this.tableRef.nativeElement;
 
-				if (table.contains(target)) {
-					bannerContainer.style.left = `${posX}px`;
-					bannerContainer.style.top = `${posY}px`;
-
-					bannerContainer.classList.add('project_banner_show');
-
-					const bannerIndex = Array.prototype.indexOf.call(
-						tbody.children,
-						target
-					);
-
-					if (this.currentBannerIndex === bannerIndex) return;
-					this.currentBannerIndex = bannerIndex;
-
-					const banner = bannerContainer.children[bannerIndex] as HTMLElement;
-
-					bannerContainer.scrollTo({
-						top: banner.offsetTop,
-					});
-
-					return;
-				}
-
-				bannerContainer.classList.remove('project_banner_show');
-			}
-		);
+		this.renderer.listen(table, 'mouseenter', this.onMouseEnter);
+		this.renderer.listen(table, 'mousemove', this.onMouseMove);
+		this.renderer.listen(table, 'mouseover', this.onMouseOver);
+		this.renderer.listen(table, 'mouseleave', this.onMouseLeave);
 	}
+
+	setBannerInMouseCenter = (event: MouseEvent) => {
+		const bannerContainer = this.bannerContainerRef.nativeElement;
+		const [posX, posY] = [event.clientX, event.clientY];
+
+		bannerContainer.style.left = `${posX}px`;
+		bannerContainer.style.top = `${posY}px`;
+
+		bannerContainer.classList.remove('project_banner_show');
+		bannerContainer.classList.add('project_banner_show');
+	};
+
+	showBanner = () => {
+		const bannerContainer = this.bannerContainerRef.nativeElement;
+		bannerContainer.classList.remove('project_banner_show');
+		bannerContainer.classList.add('project_banner_show');
+	};
+
+	hideBanner = () => {
+		const bannerContainer = this.bannerContainerRef.nativeElement;
+		bannerContainer.classList.remove('project_banner_show');
+	};
+
+	onMouseEnter = (event: MouseEvent) => {
+		this.setBannerInMouseCenter(event);
+	};
+
+	onMouseMove = (event: MouseEvent) => {
+		this.setBannerInMouseCenter(event);
+	};
+
+	onMouseOver = (event: MouseEvent) => {
+		const bannerContainer = this.bannerContainerRef.nativeElement;
+		const table = this.tableRef.nativeElement;
+		const tbody = table.children[0];
+
+		const target = (event.target as HTMLElement).offsetParent as HTMLElement;
+
+		const bannerIndex = Array.prototype.indexOf.call(tbody.children, target);
+
+		if (this.currentBannerIndex === bannerIndex) return;
+		this.currentBannerIndex = bannerIndex;
+
+		const banner = bannerContainer.children[bannerIndex] as HTMLElement;
+
+		this.showBanner();
+
+		bannerContainer.scrollTo({
+			top: banner.offsetTop,
+		});
+	};
+
+	onMouseLeave = () => {
+		this.hideBanner();
+	};
 }
