@@ -5,6 +5,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { ProjectListComponent } from '../../components/project-list/project-list.component';
 import { AboutMeComponent } from '../../components/sections/home/about-me/about-me.component';
 import { HomeIntroductionComponent } from '../../components/sections/home/home-introduction/home-introduction.component';
+import { MyServicesComponent } from '../../components/sections/home/my-services/my-services.component';
 import { ProjectExamplesBannersComponent } from '../../components/sections/home/project-examples-banners/project-examples-banners.component';
 import { SkillsComponent } from '../../components/sections/home/skills/skills.component';
 
@@ -18,6 +19,7 @@ import { SkillsComponent } from '../../components/sections/home/skills/skills.co
 		ProjectListComponent,
 		ProjectExamplesBannersComponent,
 		AboutMeComponent,
+		MyServicesComponent,
 		SkillsComponent,
 		ContactFooterComponent,
 	],
