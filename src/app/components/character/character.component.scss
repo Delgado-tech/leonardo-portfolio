@@ -1,0 +1,49 @@
+$index: var(--i);
+$delay: var(--d);
+$vapour-width: 1px;
+$vapour-height: 120px;
+$vapour-translate-x: calc(($index * $vapour-width) + ($index * 1px));
+
+.vapour {
+	width: $vapour-width;
+	height: $vapour-height;
+	fill: white;
+	translate: $vapour-translate-x;
+	animation: animate-vapour 5s linear infinite;
+	animation-delay: calc($delay * -0.5s);
+	opacity: 0;
+	filter: blur(8px);
+}
+
+.character-wrapper {
+	display: flex;
+	justify-content: center;
+	padding: 10%;
+	scale: 90%;
+}
+
+@keyframes animate-vapour {
+	0% {
+		transform: translateX($vapour-translate-x) translateY(0);
+		width: calc($vapour-width * 1);
+		opacity: 0;
+	}
+
+	15% {
+		opacity: 1;
+	}
+
+	50% {
+		transform: translateX($vapour-translate-x) translateY(-100px);
+		width: calc($vapour-width * 5);
+	}
+
+	95% {
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateX($vapour-translate-x) translateY(-200px);
+		width: calc($vapour-width * 10);
+	}
+}

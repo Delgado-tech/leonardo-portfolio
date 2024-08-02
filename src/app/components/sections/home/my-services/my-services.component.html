@@ -1,0 +1,21 @@
+<section>
+    <h3 class="section_title">Principais Serviços</h3>
+
+    <div class="services">
+        @for (service of services; track service) {
+        <div class="service_item">
+            <img [src]="getIconURL(service.iconName)" alt="service-icon" draggable="false" />
+            <div class="service_item_description">
+                <h3>{{service.title}}</h3>
+                <p>{{service.description}}</p>
+            </div>
+        </div>
+        }
+    </div>
+
+    <div class="services_cta_container">
+        <div class="services_cta">
+            <app-button [bordered]="false" color="primary"><span>conheça mais</span></app-button>
+        </div>
+    </div>
+</section>

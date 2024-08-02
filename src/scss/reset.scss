@@ -2,7 +2,20 @@
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
+	text-decoration: none;
+	list-style: none;
+	font: inherit;
+	font-size: 16px;
+	font-weight: 400;
+	color: inherit;
+	font-family: "Roboto", sans-serif;
+}
+
+a,
+img {
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
 }

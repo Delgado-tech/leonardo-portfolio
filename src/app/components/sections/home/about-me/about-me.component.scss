@@ -1,0 +1,78 @@
+@use "../../../../../scss/base" as base;
+
+@import "../../../../../scss/utils.scss";
+
+section {
+	@extend .container;
+	@include paddingY(300px);
+
+	display: flex;
+	margin-top: 100px;
+	gap: 64px;
+}
+
+.about_me__image_container {
+	@include flexCenter();
+
+	min-width: 35%;
+	height: inherit;
+
+	transform: translateX(-50px);
+
+	position: relative;
+
+	.about_me__image {
+		-webkit-mask-image: url("../../../../../assets/shapes/masks/rect.svg");
+		-webkit-mask-repeat: no-repeat;
+		mask-image: url("../../../../../assets/shapes/masks/rect.svg");
+		mask-repeat: no-repeat;
+		-webkit-mask-position: center;
+		mask-position: center;
+
+		position: absolute;
+
+		width: clamp(200px, 150%, 512px);
+		height: inherit;
+
+		img {
+			width: 75%;
+			transform: translate(10%, 3%) scale(85%);
+		}
+	}
+
+	.about_me__svg_rect {
+		position: absolute;
+
+		width: clamp(200px, 150%, 512px);
+		height: inherit;
+
+		.rect {
+			fill: base.$primary;
+		}
+	}
+}
+
+.about_me__content {
+	display: flex;
+	flex-direction: column;
+	gap: 64px;
+}
+
+.about_me__text_wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.about_me__statistics {
+	display: flex;
+	gap: 64px;
+
+	div {
+		max-width: 200px;
+	}
+}
+
+.cv_button {
+	max-width: 200px;
+}

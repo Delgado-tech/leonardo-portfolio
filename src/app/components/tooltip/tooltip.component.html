@@ -1,0 +1,13 @@
+<div class="tooltip_container">
+    <div #Tooltip class="tooltip_wrapper">
+        <div>
+            <ng-content select="[slot=tooltip]" />
+        </div>
+        <div class="tooltip_arrow_wrapper">
+            <span class="tooltip_arrow"></span>
+        </div>
+    </div>
+    <div #ContentDiv class="tooltip_content_div">
+        <ng-content select="[slot=content]" />
+    </div>
+</div>

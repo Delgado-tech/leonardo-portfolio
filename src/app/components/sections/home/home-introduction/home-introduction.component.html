@@ -1,0 +1,46 @@
+<section>
+    <div class="home_introduction">
+        <div class="home_introduction__main_text">
+            <svg class="home_introduction__main_text__wave" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0,0 L 75,0 Q 120,25 75,50 Q 30,75 75,100 L 0,100 0,0" vector-effect="non-scaling-stroke" />
+            </svg>
+
+            <div class="apresentation_title">
+                <p class="apresentation_title_prefix">Oi! 👋 eu sou</p>
+                <p class="apresentation_title_name">Leonardo Delgado</p>
+                <div class="apresentation_title_profession_wrapper">
+                    <span></span>
+                    <p>Desenvolvedor Fullstack</p>
+                </div>
+            </div>
+            <p class="apresentation_text text_content">Sou apaixonado pela tecnologia desde pequeno, gosto muito de
+                desenvolver
+                todo
+                o tipo de solução digital, amo aprender e me desafiar a coisas novas! A propósito eu também amo
+                tênis
+                de mesa 🏓</p>
+
+            <div class="cta_section">
+                <app-button [color]="'primary'">Vamos Conversar</app-button>
+                <app-cv-redirect-button />
+            </div>
+        </div>
+
+        <div class="home__character">
+            <app-character />
+        </div>
+    </div>
+
+    <div class="home__text_slider">
+        <app-text-slider [text-list]="[
+		'Design de Interfaces',
+		'Aplicativos Mobile',
+		'Serviços AWS',
+		'Dashboards',
+		'Gerenciador de Estoque',
+		'ECommerces',
+		'Marketing de marca',
+		'Landing Pages',
+	]" [icon-src]="icon_star" />
+    </div>
+</section>
