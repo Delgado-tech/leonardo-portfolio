@@ -1,0 +1,84 @@
+@use "../../../../../scss/base" as base;
+
+@import "../../../../../scss/utils.scss";
+
+%flexCol {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+section {
+	@extend .container;
+
+	@include paddingY(50px);
+	margin-bottom: 50px;
+	transform: translateY(-150px);
+	background-color: base.$gray-contrast;
+}
+
+.section_title {
+	color: base.$gray-03;
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+	margin-bottom: 64px;
+}
+
+.services {
+	display: flex;
+	gap: 64px 32px;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.service_item {
+	@extend %flexCol;
+	justify-content: start;
+	gap: 16px;
+
+	padding: 8px 12px;
+
+	img {
+		@include size(64px);
+
+		user-select: none;
+		display: block;
+	}
+
+	&_description {
+		@extend %flexCol;
+		gap: 8px;
+
+		h3 {
+			color: base.$primary;
+			font-size: base.$text-xl;
+			font-family: "Poppins", sans-serif;
+			font-weight: 600;
+		}
+
+		p {
+			color: base.$gray-04;
+			text-wrap: pretty;
+			text-align: center;
+			width: 300px;
+		}
+	}
+}
+
+.services_cta_container {
+	display: flex;
+	justify-content: center;
+
+	margin-top: 72px;
+}
+
+.services_cta {
+	width: fit-content;
+	span {
+		font-size: inherit;
+		font-family: inherit;
+		font-weight: inherit;
+
+		text-transform: uppercase;
+	}
+}
