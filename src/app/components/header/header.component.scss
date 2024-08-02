@@ -54,6 +54,44 @@ header {
 		display: flex;
 		justify-content: space-between;
 	}
+
+	a {
+		color: base.$gray-06;
+		font-size: base.$text-base;
+		font-family: "Poppins", sans-serif;
+	}
+
+	li,
+	a {
+		transition: 0.2s ease;
+		cursor: pointer;
+	}
+
+	li:hover {
+		transform: scale(105%);
+		a {
+			color: base.$primary;
+		}
+	}
+
+	img {
+		width: 48px;
+		transition: 0.5s ease;
+		filter: saturate(0%);
+		opacity: 40%;
+	}
+
+	figure {
+		overflow: hidden;
+	}
+
+	figure:hover {
+		img {
+			transform: rotate(180deg);
+			filter: saturate(100%);
+			opacity: 100%;
+		}
+	}
 }
 
 .nav_bar_hamburger {
