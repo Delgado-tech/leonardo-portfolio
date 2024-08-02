@@ -5,7 +5,7 @@ $gap: 32px;
 section {
 	margin-top: 100px;
 	overflow: hidden;
-	height: clamp(600px, 100vh, 900px);
+	height: clamp(600px, 80vh, 800px);
 	background-color: transparent;
 	position: relative;
 }
@@ -78,22 +78,23 @@ section {
 	padding: 0 calc($gap / 2);
 
 	figure {
+		$url: var(--url);
+
 		min-width: 451px;
-		height: 308px;
-		background-color: red;
+		height: 267px;
+
+		background-image: $url;
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
+
+		box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.1);
 
 		filter: saturate(0%);
-		transition: 0.2s ease-out;
+		transition: 0.5s ease-in-out;
 
 		&:hover {
 			filter: saturate(100%);
-		}
-
-		&:nth-child(1) {
-			background-color: blue;
-		}
-		&:nth-child(5) {
-			background-color: orange;
 		}
 	}
 }
