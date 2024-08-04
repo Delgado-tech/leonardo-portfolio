@@ -1,5 +1,5 @@
 <section #Container>
-    <h3>Projetos em Destaque</h3>
+    <h3 class="project_list_title">Projetos em Destaque</h3>
     <div class="project_banner" #Banner>
         @for (project of projectList; track project) {
         <figure>
@@ -8,6 +8,7 @@
         </figure>
         }
     </div>
+
     <table #Table>
         <tbody>
             @for (project of projectList; track project) {
@@ -18,4 +19,32 @@
             }
         </tbody>
     </table>
+
+    <div class="project_list_blocks">
+        @for (project of projectList; track project) {
+        <div class="project_list_blocks__project">
+            <div class="img_card">
+                <div class="img_card_content">
+                    <figure class="img_card_content_front">
+                        <img [src]="'../../../assets/project-banners/' + project.bannerFileName"
+                            [alt]="'website ' + project.title" draggable="false" />
+                    </figure>
+                    <div class="img_card_content_back">
+                        <img src="../../../assets/icons/common/quote.svg" alt="quotes" />
+                        <p>
+                            {{project.description}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="project_content">
+                <div>
+                    <h3>{{project.title}}</h3>
+                    <span>{{project.createdDate.getFullYear()}}</span>
+                </div>
+                <app-button [shrink]="true" class="cta_button">ver mais</app-button>
+            </div>
+        </div>
+        }
+    </div>
 </section>

@@ -7,13 +7,6 @@ section {
 	@extend .container;
 }
 
-h3 {
-	color: base.$primary;
-	font-family: "Poppins", sans-serif;
-	font-weight: 600;
-	margin-bottom: 16px;
-}
-
 table,
 td {
 	border: 1px solid base.$gray-03;
@@ -57,6 +50,13 @@ table {
 		font-weight: 500;
 		font-size: base.$text-lg;
 	}
+}
+
+.project_list_title {
+	color: base.$primary;
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+	margin-bottom: 16px;
 }
 
 .project_banner {
@@ -106,5 +106,154 @@ table {
 		object-position: center;
 		width: 100%;
 		height: $banner_size;
+	}
+}
+
+.project_list_blocks {
+	display: none;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	gap: 32px;
+
+	.img_card {
+		width: 100%;
+		height: 320px;
+		margin-bottom: 16px;
+
+		perspective: 1200px;
+		position: relative;
+
+		&_content {
+			@include size(100%);
+
+			position: relative;
+
+			transition: 1s;
+			transform-style: preserve-3d;
+
+			&_front,
+			&_back {
+				@include size(100%);
+				position: absolute;
+
+				-webkit-backface-visibility: hidden;
+				backface-visibility: hidden;
+			}
+
+			&_front img {
+				width: calc(100% - 16px);
+				height: 100%;
+				padding: 8px;
+				object-fit: contain;
+				filter: saturate(80%);
+				background-color: base.$gray-02;
+			}
+
+			&_back {
+				background-color: base.$gray-02;
+				transform: rotateY(180deg);
+				transition: transform 0.5s;
+
+				img {
+					z-index: -1;
+					@include size(64px);
+					position: absolute;
+					opacity: 30%;
+					right: 32px;
+					bottom: 32px;
+				}
+
+				p {
+					height: calc(100% - 32px);
+					padding: 32px;
+					color: base.$gray-04;
+					font-size: base.$text-xl;
+					overflow-y: auto;
+					overflow-x: hidden;
+					hyphens: auto;
+				}
+			}
+		}
+
+		&:hover {
+			.img_card_content {
+				transform: rotateY(180deg);
+			}
+		}
+	}
+
+	&__project {
+		width: clamp(300px, 100%, 400px);
+		background-color: base.$gray-contrast;
+		display: flex;
+		flex-direction: column;
+		flex-grow: 2;
+
+		&:first-child {
+			width: 100%;
+		}
+
+		.project_content {
+			padding: 16px 32px;
+			display: flex;
+			align-items: center;
+			gap: 16px 32px;
+			justify-content: space-between;
+		}
+
+		h3 {
+			color: base.$gray-04;
+			font-family: "Poppins", sans-serif;
+			font-weight: 600;
+			font-size: base.$text-xl;
+		}
+
+		span {
+			color: base.$gray-04;
+			font-weight: 500;
+		}
+	}
+}
+
+@media screen and (max-width: 1150px) {
+	section {
+		@include paddingX(8%);
+	}
+
+	table {
+		display: none;
+	}
+
+	.project_list_blocks {
+		display: flex;
+	}
+}
+
+@media screen and (max-width: base.$bp-md) {
+	.project_list_blocks__project:nth-child(5) {
+		display: none;
+	}
+}
+
+@media screen and (max-width: base.$bp-sm) {
+	.img_card_content_back p {
+		font-size: base.$text-lg !important;
+	}
+
+	.project_content {
+		padding: 16px 24px !important;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.project_list_blocks__project:nth-child(4) {
+		display: none;
+	}
+}
+
+@media screen and (max-width: base.$bp-xs) {
+	.img_card_content_back p {
+		height: calc(100% - 32px);
+		padding: 16px !important;
 	}
 }
