@@ -141,13 +141,13 @@ export const technologyIcons: IIconCategory[] = [
 				subDisplay: 'ambiente de execução javascript',
 				comment: 'usado em aplicações por empresas como Netflix e LinkedIn.',
 			},
-			{
-				fileName: 'java',
-				displayName: 'Java',
-				subDisplay: 'linguagem de programação',
-				comment:
-					'ferramenta amplamente utilizada em aplicações empresariais por empresas como Google e Amazon.',
-			},
+			// {
+			// 	fileName: 'java',
+			// 	displayName: 'Java',
+			// 	subDisplay: 'linguagem de programação',
+			// 	comment:
+			// 		'ferramenta amplamente utilizada em aplicações empresariais por empresas como Google e Amazon.',
+			// },
 			{
 				fileName: 'php',
 				displayName: 'PHP',
@@ -163,11 +163,11 @@ export const technologyIcons: IIconCategory[] = [
 				displayName: 'Python',
 				subDisplay: 'linguagem de programação',
 			},
-			{
-				fileName: 'springbot',
-				displayName: 'Spring Bot',
-				subDisplay: 'framework java',
-			},
+			// {
+			// 	fileName: 'springbot',
+			// 	displayName: 'Spring Bot',
+			// 	subDisplay: 'framework java',
+			// },
 		],
 	},
 	{
