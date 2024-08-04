@@ -127,7 +127,7 @@ header {
 		box-shadow: -2px 0px 20px 10px rgba(0, 0, 0, 0.1);
 	}
 
-	// traço abaixo do texto "le menu"
+	// traço abaixo do texto "menu"
 	p {
 		color: base.$gray-03;
 		user-select: none;
@@ -351,7 +351,7 @@ header[data-show-hamburger-menu="true"] {
 	}
 }
 
-@media screen and (min-width: base.$bp-md) {
+@media screen and (min-width: calc(base.$bp-md + 1px)) {
 	header[data-show-hamburger-menu="false"] {
 		.nav_bar_hamburger {
 			visibility: visible;
@@ -409,6 +409,12 @@ header[data-show-hamburger-menu="true"] {
 
 		ul li a {
 			font-size: base.$text-3xl;
+		}
+
+		@media screen and (max-height: 520px) {
+			.internal_link_routes li a {
+				@include paddingY(8px);
+			}
 		}
 	}
 }

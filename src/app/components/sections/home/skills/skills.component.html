@@ -1,7 +1,6 @@
 <section>
 	<h2 class="title">Tecnologias</h2>
 
-
 	<div class="technologies_container">
 		@for (category of technologyIcons; track category) {
 		<div [className]="category.categoryName + ' technologies_wrapper'">
@@ -9,8 +8,11 @@
 			@for (icon of category.iconList; track icon) {
 			<app-tooltip>
 				<!-- Content -->
-				<figure slot="content" [style]="'--url:' + getIconURL(category.dirName, icon.fileName)">
-				</figure>
+				<div slot="content" class="icon_wrapper">
+					<figure [style]="'--url:' + getIconURL(category.dirName, icon.fileName)">
+					</figure>
+					<span class="icon_name">{{icon.displayName}}</span>
+				</div>
 
 				<!-- Tooltip body -->
 				<div slot="tooltip" class="tooltip">

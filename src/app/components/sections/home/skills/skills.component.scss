@@ -2,27 +2,6 @@
 
 @import "../../../../../scss/utils.scss";
 
-.frontend {
-}
-
-.backend {
-}
-
-// .database {
-// 	grid-area: db;
-// }
-
-// .api {
-// 	grid-area: api;
-// }
-
-.tests {
-}
-
-// .tools {
-// 	grid-area: tools;
-// }
-
 section {
 	@extend .container;
 	@include paddingY(48px);
@@ -31,6 +10,8 @@ section {
 	display: flex;
 	flex-direction: column;
 	gap: 40px;
+
+	overflow: hidden;
 
 	&::before {
 		content: " ";
@@ -49,7 +30,7 @@ section {
 .technologies_container {
 	display: flex;
 	flex-wrap: wrap;
-	max-width: 1200px;
+	max-width: 1100px;
 	gap: 32px;
 
 	.technologies_wrapper {
@@ -82,6 +63,26 @@ section {
 		}
 	}
 
+	.icon_wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 5px;
+		text-align: center;
+
+		.icon_name {
+			display: none;
+			color: base.$gray-03;
+			transition: 0.2s ease;
+		}
+
+		&:hover {
+			.icon_name {
+				color: base.$primary;
+			}
+		}
+	}
+
 	figure {
 		$icon-url: var(--url);
 
@@ -93,8 +94,8 @@ section {
 		mask-position: center;
 		mask-size: 64px 64px;
 
-		width: 64px;
-		height: 64px;
+		@include size(64px);
+
 		background-color: base.$gray-05;
 		display: flex;
 		align-items: center;
@@ -140,5 +141,70 @@ section {
 		figure {
 			background-color: base.$primary;
 		}
+	}
+}
+
+@media screen and (max-width: 1417px) {
+	.tests {
+		width: 250px;
+	}
+}
+
+@media screen and (max-width: 1150px) {
+	.tests {
+		width: auto;
+	}
+
+	.technologies_wrapper {
+		flex-grow: 1;
+	}
+}
+
+@media screen and (max-width: 972px) {
+	.database {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: base.$bp-md) {
+	.technologies_wrapper {
+		justify-content: center;
+	}
+
+	figure {
+		@include size(52px !important);
+		mask-size: 52px 52px !important;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.api,
+	.tests,
+	.tools {
+		display: none !important;
+	}
+}
+
+@media screen and (max-width: base.$bp-sm) {
+	section {
+		@include paddingX(8%);
+
+		&::before {
+			display: none;
+		}
+	}
+
+	.frontend,
+	.backend,
+	.database {
+		display: none !important;
+	}
+
+	.technologies_wrapper {
+		@include paddingX(8px !important);
+	}
+
+	.icon_name {
+		display: inherit !important;
 	}
 }

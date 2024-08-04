@@ -19,11 +19,15 @@
     </div>
 
     <div class="footer_alternative_contact_buttons">
-        <div>
-            <app-button [color]="'lightgray'" [bordered]="true">{{social.email}}</app-button>
+        <div class="btn_email">
+            <app-button [color]="'lightgray'" [bordered]="true" [shrink]="true">
+                <span>{{social.email}}</span>
+            </app-button>
         </div>
-        <div>
-            <app-button [color]="'lightgray'" [bordered]="true">{{getFormalPhoneNumber()}}</app-button>
+        <div class="btn_phone">
+            <app-button [color]="'lightgray'" [bordered]="true" [shrink]="true">
+                <span>{{getFormalPhoneNumber()}}</span>
+            </app-button>
         </div>
     </div>
     <span class="footer_bottom_blank"></span>
@@ -32,7 +36,7 @@
             <span class="footer_bottom_copyright_text">Copyright © 2024 Leonardo Delgado</span>
         </div>
         <div class="footer_bottom_social_medias">
-            <span>social</span>
+            <span class="footer_bottom_social_medias_title">social</span>
             <ul>
                 <li><app-text-link [href]="social.linkedin">linkedin</app-text-link></li>
                 <li><app-text-link [href]="social.instagram">instagram</app-text-link></li>

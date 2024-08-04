@@ -76,3 +76,45 @@ section {
 .cv_button {
 	max-width: 200px;
 }
+
+@media screen and (max-width: 1150px) {
+	section {
+		flex-direction: column;
+		padding-top: calc(300px + 150px);
+	}
+
+	.about_me__image_container {
+		transform: scale(75%) translateY(-250px);
+	}
+}
+
+@media screen and (max-width: base.$bp-md) {
+	section {
+		@include paddingX(8%);
+	}
+}
+
+@media screen and (max-width: base.$bp-sm) {
+	.about_me__text_wrapper {
+		h2,
+		p,
+		span {
+			text-align: center;
+		}
+	}
+
+	.about_me__statistics {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	article p {
+		text-wrap: balance;
+	}
+
+	.cv_button {
+		max-width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+}

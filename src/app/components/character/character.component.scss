@@ -18,7 +18,8 @@ $vapour-translate-x: calc(($index * $vapour-width) + ($index * 1px));
 .character-wrapper {
 	display: flex;
 	justify-content: center;
-	padding: 10%;
+	transform: inherit;
+	padding: 100px 40px 0 40px;
 	scale: 90%;
 }
 
