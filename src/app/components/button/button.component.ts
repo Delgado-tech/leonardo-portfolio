@@ -18,10 +18,12 @@ export class ButtonComponent {
 	@Input('routerLink') public routerLink: string | undefined;
 	@Input('target') target: AnchorTargetType = '_self';
 	@Input('bordered') bordered: boolean = false;
+	@Input('shrink') shrink: boolean = false;
 	@Input('color') color: ButtonColorType = 'primary';
 
 	ngAfterViewInit() {
 		if (this.bordered) this.buttonRef.nativeElement.classList.add('bordered');
+		if (this.shrink) this.buttonRef.nativeElement.classList.add('shrink');
 		this.buttonRef.nativeElement.classList.add(this.color);
 	}
 }
