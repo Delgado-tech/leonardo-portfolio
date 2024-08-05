@@ -8,7 +8,7 @@ interface IProject {
 	highlight?: boolean;
 }
 
-export const projects: IProject[] = [
+export const projectsMockup: IProject[] = [
 	{
 		title: 'Multiply Me',
 		description: `O site consiste em um jogo de matemática onde ajuda os usuários a treinarem multiplicação e pensamento rápido, a interface foi baseada no Duolingo, bem como as animações.`,

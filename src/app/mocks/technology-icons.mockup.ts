@@ -12,7 +12,7 @@ interface IIconCategory {
 	iconList: IIconList[];
 }
 
-export const technologyIcons: IIconCategory[] = [
+export const technologyIconsMockup: IIconCategory[] = [
 	{
 		categoryName: 'stack',
 		categoryAlternativeName: 'stack utilizada',

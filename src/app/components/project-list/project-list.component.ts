@@ -7,7 +7,7 @@ import {
 	Renderer2,
 	ViewChild,
 } from '@angular/core';
-import { projects } from '../../mocks/projects.mockup';
+import { projectsMockup } from '../../mocks/projects.mockup';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
@@ -23,7 +23,7 @@ export class ProjectListComponent {
 	@ViewChild('Table') tableRef!: ElementRef<HTMLElement>;
 
 	currentBannerIndex: number = 0;
-	projectList = projects
+	projectList = projectsMockup
 		.filter((p) => p.highlight === true)
 		.sort((a, b) => {
 			// ordernar por ano (decrescente)

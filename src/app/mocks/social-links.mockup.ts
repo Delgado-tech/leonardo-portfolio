@@ -1,4 +1,4 @@
-export const socialLinks = {
+export const socialLinksMockup = {
 	phone: {
 		countryCode: '+55',
 		ddd: '15',

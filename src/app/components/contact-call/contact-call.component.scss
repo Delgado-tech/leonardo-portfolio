@@ -1,0 +1,133 @@
+@use "../../../scss/base" as base;
+
+@import "../../../scss/utils.scss";
+
+section {
+	@include paddingY(128px, 32px);
+	@extend .container;
+
+	position: relative;
+	margin-top: 150px;
+
+	background-color: base.$gray-06;
+	color: base.$gray-01;
+
+	height: clamp(670px, calc(100vh - 128px - 32px), 1000px);
+	z-index: 0;
+}
+
+.wave {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+	svg {
+		width: fit-content;
+
+		path {
+			fill: base.$gray-05;
+		}
+	}
+
+	z-index: -1;
+}
+
+.contact_cta {
+	position: relative;
+	z-index: 1;
+
+	margin-top: 160px;
+
+	display: flex;
+	justify-content: end;
+
+	&_trace {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+
+		background: base.$gradient-gray-center;
+
+		width: 100%;
+		height: 3px;
+		z-index: -1;
+	}
+
+	&_btn {
+		width: fit-content;
+		margin-right: 8%;
+
+		span {
+			text-transform: uppercase;
+			font-family: "Poppins", sans-serif;
+			font-size: base.$text-xl;
+		}
+	}
+}
+
+.alternative_contact_buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+
+	margin-top: 72px;
+
+	div {
+		width: fit-content;
+	}
+
+	span {
+		font-size: inherit;
+		font-family: inherit;
+		font-weight: inherit;
+
+		padding: 12px 28px;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.contact_cta {
+		justify-content: center;
+
+		&_btn {
+			margin-right: 0;
+		}
+	}
+
+	.alternative_contact_buttons span {
+		padding: 0;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.contact_cta_btn span {
+		font-size: base.$text-lg;
+	}
+}
+
+@media screen and (max-width: base.$bp-sm) {
+	section {
+		@include paddingX(8%);
+	}
+
+	.alternative_contact_buttons span {
+		font-size: base.$text-sm;
+	}
+}
+
+@media screen and (max-width: 380px) {
+	.contact_cta_btn span {
+		font-size: base.$text-base;
+	}
+
+	.btn_email span {
+		width: 160px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+}

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../../components/button/button.component';
-import { ContactFooterComponent } from '../../components/contact-footer/contact-footer.component';
+import { ContactCallComponent } from '../../components/contact-call/contact-call.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { ProjectListComponent } from '../../components/project-list/project-list.component';
 import { AboutMeComponent } from '../../components/sections/home/about-me/about-me.component';
@@ -21,9 +21,8 @@ import { SkillsComponent } from '../../components/sections/home/skills/skills.co
 		AboutMeComponent,
 		MyServicesComponent,
 		SkillsComponent,
-		ContactFooterComponent,
+		ContactCallComponent,
 	],
 	templateUrl: './home.component.html',
-	styleUrl: './home.component.scss',
 })
 export class HomeComponent {}

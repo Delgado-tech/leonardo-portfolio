@@ -1,0 +1,13 @@
+@use "../../../scss/base" as base;
+
+main {
+	background-color: base.$gray-06;
+	width: 100%;
+	min-height: 100vh;
+	height: 100%;
+}
+
+section {
+	@extend .container;
+	padding-top: 160px;
+}
