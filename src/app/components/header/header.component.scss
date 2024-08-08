@@ -100,6 +100,16 @@ header {
 	.internal_link_routes li:first-child {
 		display: none;
 	}
+
+	.nav_item_selected a {
+		text-decoration: underline;
+		text-decoration-color: base.$gray-04;
+		text-underline-offset: 4px;
+	}
+
+	.nav_item_selected:hover a {
+		text-decoration: none;
+	}
 }
 
 .nav_bar_hamburger {

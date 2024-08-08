@@ -9,7 +9,7 @@
 			</a>
 			<ul class="internal_link_routes">
 				@for (link of navbarLinks; track link) {
-				<li>
+				<li [class]="isCurrentRouteLink(link.routeLink)">
 					<a [routerLink]="[link.routeLink]">{{ link.routeDisplay }}</a>
 				</li>
 				}
