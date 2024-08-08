@@ -1,13 +1,3 @@
-@if (routerLink) {
-<a [routerLink]="['/routePath']" [target]="target">
-    <button #buttonRef type="button">
-        <ng-content />
-    </button>
-</a>
-} @else {
-<a [href]="href" [target]="target">
-    <button #buttonRef type="button">
-        <ng-content />
-    </button>
-</a>
-}
+<button #ButtonRef [type]="type">
+    <ng-content />
+</button>

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ButtonComponent } from '../button/button.component';
+import { RedirectButtonComponent } from '../redirect-button/redirect-button.component';
 
 @Component({
 	selector: 'app-cv-redirect-button',
 	standalone: true,
-	imports: [ButtonComponent],
+	imports: [RedirectButtonComponent],
 	templateUrl: './cv-redirect-button.component.html',
 	styleUrl: './cv-redirect-button.component.scss',
 })

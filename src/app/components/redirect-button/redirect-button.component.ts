@@ -1,20 +1,23 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 type ButtonColorType = 'primary' | 'primary_gradient' | 'gray' | 'lightgray';
-type ButtonType = 'button' | 'menu' | 'reset' | 'submit';
+type AnchorTargetType = '_self' | '_blank';
 
 @Component({
-	selector: 'app-button',
+	selector: 'app-redirect-button',
 	standalone: true,
-	imports: [],
-	templateUrl: './button.component.html',
-	styleUrl: './button.component.scss',
+	imports: [RouterLink],
+	templateUrl: './redirect-button.component.html',
+	styleUrl: './redirect-button.component.scss',
 })
-export class ButtonComponent {
+export class RedirectButtonComponent {
 	@ViewChild('ButtonRef') buttonRef!: ElementRef<HTMLButtonElement>;
 
+	@Input('href') href: string | undefined;
+	@Input('routerLink') public routerLink: string | undefined;
+	@Input('target') target: AnchorTargetType = '_self';
 	@Input('bordered') bordered: boolean = false;
-	@Input('type') type: ButtonType = 'button';
 	@Input('shrink') shrink: boolean = false;
 	@Input('color') color: ButtonColorType = 'primary';
 

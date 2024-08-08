@@ -1,0 +1,68 @@
+@use "../../../scss/base" as base;
+
+@import "../../../scss/utils.scss";
+
+button {
+	font-family: "Poppins", sans-serif;
+	font-weight: 500;
+	cursor: pointer;
+
+	width: 100%;
+	padding: 16px 48px;
+
+	border: 1px solid;
+	border-radius: 50px;
+	transition: 0.2s ease;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 16px;
+
+	&:hover {
+		filter: brightness(120%);
+		transform: scale(105%);
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+	}
+
+	&.shrink {
+		padding: 8px 28px;
+	}
+
+	&.primary {
+		color: base.$primary;
+		background-color: base.$primary;
+		border-color: base.$primary;
+	}
+
+	&.primary_gradient {
+		color: base.$gradient-primary;
+		background: base.$gradient-primary;
+	}
+
+	&.gray {
+		color: base.$gray-06;
+		background-color: base.$gray-06;
+		border-color: base.$gray-06;
+
+		&:hover {
+			filter: brightness(150%);
+		}
+	}
+
+	&.lightgray {
+		color: base.$gray-03;
+		background-color: base.$gray-03;
+		border-color: base.$gray-03;
+	}
+
+	&:not(.bordered) {
+		color: white;
+		border-color: transparent;
+	}
+
+	&.bordered {
+		background-color: transparent;
+		background: transparent;
+	}
+}
