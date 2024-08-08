@@ -1,0 +1,11 @@
+<div class="textarea_wrapper">
+    <label [for]="textareaId" #Label>{{label}}</label>
+    <textarea [id]="textareaId" [name]="textareaId" [rows]="rows" [placeholder]="placeholder"
+        (input)="onInputChange($event)"></textarea>
+
+    @if (showLetterCounter) {
+    <div class="textarea_remaining_letters">
+        <span>{{remainingLetters}}</span>
+    </div>
+    }
+</div>

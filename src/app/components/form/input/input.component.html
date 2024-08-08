@@ -1,0 +1,5 @@
+<div class="input_wrapper">
+    <label [for]="inputId" #Label>{{label}}</label>
+    <input [id]="inputId" [name]="inputId" type="text" [placeholder]="placeholder" (input)="onInputChange($event)"
+        [maxLength]="maxLength" />
+</div>
