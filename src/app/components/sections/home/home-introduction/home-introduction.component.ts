@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ButtonComponent } from '../../../button/button.component';
+import { RedirectButtonComponent } from '../../../redirect-button/redirect-button.component';
 import { CharacterComponent } from '../../../character/character.component';
 import { CvRedirectButtonComponent } from '../../../cv-redirect-button/cv-redirect-button.component';
 import { TextSliderComponent } from '../../../text-slider/text-slider.component';
@@ -10,7 +10,7 @@ import { TextSliderComponent } from '../../../text-slider/text-slider.component'
 	imports: [
 		TextSliderComponent,
 		CharacterComponent,
-		ButtonComponent,
+		RedirectButtonComponent,
 		CvRedirectButtonComponent,
 	],
 	templateUrl: './home-introduction.component.html',

@@ -17,22 +17,22 @@
 		<span class="contact_cta_trace"></span>
 
 		<div class="contact_cta_btn">
-			<app-button [color]="'primary_gradient'"
-				><span>entrar em contato</span></app-button
+			<app-redirect-button [color]="'primary_gradient'"
+				><span>entrar em contato</span></app-redirect-button
 			>
 		</div>
 	</div>
 
 	<div class="alternative_contact_buttons">
 		<div class="btn_email">
-			<app-button [color]="'lightgray'" [bordered]="true" [shrink]="true">
+			<app-redirect-button [color]="'lightgray'" [bordered]="true" [shrink]="true">
 				<span>{{ social.email }}</span>
-			</app-button>
+			</app-redirect-button>
 		</div>
 		<div class="btn_phone">
-			<app-button [color]="'lightgray'" [bordered]="true" [shrink]="true">
+			<app-redirect-button [color]="'lightgray'" [bordered]="true" [shrink]="true">
 				<span>{{ getFormalPhoneNumber() }}</span>
-			</app-button>
+			</app-redirect-button>
 		</div>
 	</div>
 

@@ -8,12 +8,12 @@ import {
 	ViewChild,
 } from '@angular/core';
 import { projectsMockup } from '../../mocks/projects.mockup';
-import { ButtonComponent } from '../button/button.component';
+import { RedirectButtonComponent } from '../redirect-button/redirect-button.component';
 
 @Component({
 	selector: 'app-project-list',
 	standalone: true,
-	imports: [ButtonComponent],
+	imports: [RedirectButtonComponent],
 	templateUrl: './project-list.component.html',
 	styleUrl: './project-list.component.scss',
 })

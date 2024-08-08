@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ButtonComponent } from '../../../button/button.component';
+import { RedirectButtonComponent } from '../../../redirect-button/redirect-button.component';
 
 interface IServiceContent {
 	iconName: string;
@@ -10,7 +10,7 @@ interface IServiceContent {
 @Component({
 	selector: 'app-my-services',
 	standalone: true,
-	imports: [ButtonComponent],
+	imports: [RedirectButtonComponent],
 	templateUrl: './my-services.component.html',
 	styleUrl: './my-services.component.scss',
 })
