@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ButtonComponent } from '../../components/button/button.component';
 import { ContactCallComponent } from '../../components/contact-call/contact-call.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { ProjectListComponent } from '../../components/project-list/project-list.component';
@@ -13,7 +12,6 @@ import { SkillsComponent } from '../../components/sections/home/skills/skills.co
 	selector: 'app-home',
 	standalone: true,
 	imports: [
-		ButtonComponent,
 		HeaderComponent,
 		HomeIntroductionComponent,
 		ProjectListComponent,
