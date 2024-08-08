@@ -1,14 +1,12 @@
-<header
-	#header
-	[attr.data-hamburger-menu-open]="isHamburgerMenuOpen"
-	[attr.data-show-hamburger-menu]="showHamburgerMenu"
-	class="prevent_animation_when_page_load"
->
+<header #header [attr.data-hamburger-menu-open]="isHamburgerMenuOpen"
+	[attr.data-show-hamburger-menu]="showHamburgerMenu" class="prevent_animation_when_page_load">
 	<div class="nav_bar">
 		<nav>
-			<figure class="logo">
-				<img src="../../../assets/icons/logo.svg" draggable="false" />
-			</figure>
+			<a [routerLink]="'/'">
+				<figure class="logo">
+					<img src="../../../assets/icons/logo.svg" draggable="false" />
+				</figure>
+			</a>
 			<ul class="internal_link_routes">
 				@for (link of navbarLinks; track link) {
 				<li>
@@ -32,10 +30,8 @@
 				<ul class="internal_link_routes">
 					@for (link of navbarLinks; track link) {
 
-					<li
-						[style]="'--i: ' + ($index + 2)"
-						[class]="'nav_home_option ' + isCurrentRouteLink(link.routeLink)"
-					>
+					<li [style]="'--i: ' + ($index + 2)"
+						[class]="'nav_home_option ' + isCurrentRouteLink(link.routeLink)">
 						<a [routerLink]="[link.routeLink]">{{ link.routeDisplay }}</a>
 					</li>
 					}

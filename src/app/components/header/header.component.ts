@@ -9,16 +9,17 @@ import {
 	ViewChild,
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { navbarLinkMockup } from '../../mocks/navbar-links.mockup';
+import { socialLinksMockup } from '../../mocks/social-links.mockup';
 import { ScrollObserverService } from '../../services/scroll-observer/scroll-observer.service';
 import { preventAnimationWhenPageLoad } from '../../utils/preventAnimationWhenPageLoad';
-import { socialLinksMockup } from '../../mocks/social-links.mockup';
+import { RedirectButtonComponent } from '../redirect-button/redirect-button.component';
 import { TextLinkComponent } from '../text-link/text-link.component';
-import { navbarLinkMockup } from '../../mocks/navbar-links.mockup';
 
 @Component({
 	selector: 'app-header',
 	standalone: true,
-	imports: [RouterLink, TextLinkComponent],
+	imports: [RouterLink, TextLinkComponent, RedirectButtonComponent, RouterLink],
 	templateUrl: './header.component.html',
 	styleUrl: './header.component.scss',
 })
