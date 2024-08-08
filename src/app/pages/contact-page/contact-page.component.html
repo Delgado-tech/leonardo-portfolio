@@ -3,7 +3,48 @@
 
 	<section>
 		<app-lets-talk-title />
+
+		<div class="contact_wrapper">
+			<form (submit)="onSubmit($event)">
+				<div class="input_column">
+					<app-input input-id="name" input-type="text" input-label="Qual seu nome?"
+						input-placeholder="José Silva" [input-regex]="regex.LettersAccent" [input-max-length]="50" />
+					<app-input input-id="email" input-type="email" input-label="Qual seu e-mail?"
+						input-placeholder="jose@silva.com" [input-max-length]="50" />
+				</div>
+
+				<div class="input_column">
+					<app-input input-id="phone" input-type="text" input-label="Qual seu celular?"
+						input-placeholder="(11) 99123-4567" [input-regex]="regex.Cel" />
+					<app-input input-id="service" input-type="text" input-label="Qual serviço você procura?"
+						input-placeholder="Programação, Web Design..." [input-max-length]="50" />
+				</div>
+
+				<app-textarea textarea-id="message" textarea-label="Mensagem"
+					textarea-placeholder="Olá Leo, eu estou precisando de ajuda com..." [textarea-rows]="6"
+					[textarea-max-length]="1024" [textarea-show-letter-counter]="true" />
+
+				<div class="submit_btn_container">
+					<app-button class="submit_btn" type="submit" color="primary_gradient">Enviar</app-button>
+				</div>
+			</form>
+
+			<div class="alternative_contact_wrapper">
+				<div class="alternative_contact">
+					<h3>Formas de contato</h3>
+					<app-text-link>{{social.email}}</app-text-link>
+					<app-text-link>{{getFormalPhoneNumber()}}</app-text-link>
+				</div>
+				<div class="alternative_contact">
+					<h3>Social</h3>
+					<app-text-link>linkedin</app-text-link>
+					<app-text-link>instagram</app-text-link>
+					<app-text-link>youtube</app-text-link>
+				</div>
+			</div>
+		</div>
+
 	</section>
 
-	<app-footer />
+	<app-footer [hide-social-medias]="true" />
 </main>
