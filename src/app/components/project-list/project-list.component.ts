@@ -3,80 +3,92 @@ import {
 	Component,
 	ElementRef,
 	Inject,
+	Input,
 	PLATFORM_ID,
 	Renderer2,
+	signal,
 	ViewChild,
 } from '@angular/core';
-import { projectsMockup } from '../../mocks/projects.mockup';
-import { RedirectButtonComponent } from '../redirect-button/redirect-button.component';
+import {
+	IProjectMockupItem,
+	projectsMockup,
+} from '../../mocks/projects.mockup';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
 	selector: 'app-project-list',
 	standalone: true,
-	imports: [RedirectButtonComponent],
+	imports: [ButtonComponent],
 	templateUrl: './project-list.component.html',
 	styleUrl: './project-list.component.scss',
 })
 export class ProjectListComponent {
+	@Input('show-table-headers') showTableHeaders: boolean = true;
+	@Input('show-technologies') showTechnologies: boolean = true;
+	@Input('show-only-highlight') showOnlyHighlight: boolean = true;
+	@Input('section-title') sectionTitle?: string;
+
 	@ViewChild('Banner') bannerContainerRef!: ElementRef<HTMLElement>;
+	@ViewChild('BannerBtn') bannerBtnRef!: ElementRef<HTMLElement>;
 	@ViewChild('Container') containerRef!: ElementRef<HTMLElement>;
 	@ViewChild('Table') tableRef!: ElementRef<HTMLElement>;
 
 	currentBannerIndex: number = 0;
-	projectList = projectsMockup
-		.filter((p) => p.highlight === true)
-		.sort((a, b) => {
-			// ordernar por ano (decrescente)
-			return b.createdDate.getFullYear() - a.createdDate.getFullYear();
-		});
+
+	projectList = signal<IProjectMockupItem[]>([]);
 
 	constructor(
 		@Inject(PLATFORM_ID)
 		private platform_id: any,
 		private renderer: Renderer2
-	) {}
+	) {
+		this.projectList.set(this.getProjectList());
+	}
 
 	ngAfterViewInit(): void {
 		if (isPlatformServer(this.platform_id)) return;
 
-		const table = this.tableRef.nativeElement;
+		this.projectList.set(this.getProjectList());
 
-		const setBannerInMouseCenter = (event: MouseEvent) => {
-			const bannerContainer = this.bannerContainerRef.nativeElement;
+		const table = this.tableRef.nativeElement;
+		const bannerContainer = this.bannerContainerRef.nativeElement;
+		const bannerBtnContainer = this.bannerBtnRef.nativeElement;
+
+		const followMouseCenter = (event: MouseEvent, element: HTMLElement) => {
 			const [posX, posY] = [event.clientX, event.clientY];
 
-			bannerContainer.style.left = `${posX}px`;
-			bannerContainer.style.top = `${posY}px`;
+			element.style.left = `${posX}px`;
+			element.style.top = `${posY}px`;
 
-			bannerContainer.classList.remove('project_banner_show');
-			bannerContainer.classList.add('project_banner_show');
+			showBanner();
 		};
 
 		const showBanner = () => {
-			const bannerContainer = this.bannerContainerRef.nativeElement;
-			bannerContainer.classList.remove('project_banner_show');
+			hideBanner();
 			bannerContainer.classList.add('project_banner_show');
+			bannerBtnContainer.classList.add('project_banner_btn_show');
 		};
 
 		const hideBanner = () => {
-			const bannerContainer = this.bannerContainerRef.nativeElement;
 			bannerContainer.classList.remove('project_banner_show');
+			bannerBtnContainer.classList.remove('project_banner_btn_show');
 		};
 
 		const onMouseEnter = (event: MouseEvent) => {
-			setBannerInMouseCenter(event);
+			followMouseCenter(event, bannerContainer);
+			followMouseCenter(event, bannerBtnContainer);
 		};
 
 		const onMouseMove = (event: MouseEvent) => {
-			setBannerInMouseCenter(event);
+			followMouseCenter(event, bannerContainer);
+			followMouseCenter(event, bannerBtnContainer);
 		};
 
 		const onMouseOver = (event: MouseEvent) => {
-			const bannerContainer = this.bannerContainerRef.nativeElement;
 			const table = this.tableRef.nativeElement;
-			const tbody = table.children[0];
+			const tbody = table.children[1];
 
-			const target = (event.target as HTMLElement).offsetParent as HTMLElement;
+			const target = (event.target as HTMLElement).parentElement;
 
 			const nodes = Array.prototype.slice.call(tbody.children);
 			const bannerIndex = nodes.indexOf(target);
@@ -97,9 +109,44 @@ export class ProjectListComponent {
 			hideBanner();
 		};
 
+		const onResize = () => {
+			this.toggleDevToolsClass();
+		};
+
+		this.toggleDevToolsClass();
+
 		this.renderer.listen(table, 'mouseenter', onMouseEnter);
 		this.renderer.listen(table, 'mousemove', onMouseMove);
 		this.renderer.listen(table, 'mouseover', onMouseOver);
 		this.renderer.listen(table, 'mouseleave', onMouseLeave);
+		this.renderer.listen(window, 'resize', onResize);
+	}
+
+	toggleDevToolsClass(): void {
+		const container = this.containerRef.nativeElement;
+		container.classList.remove('devtools_open');
+
+		if (window.outerWidth - window.innerWidth > 100) {
+			container.classList.add('devtools_open');
+		}
+	}
+
+	getProjectList(): IProjectMockupItem[] {
+		return projectsMockup
+			.filter((p) => {
+				if (this.showOnlyHighlight === true) {
+					if (p.highlight === true) {
+						return true;
+					}
+
+					return false;
+				}
+
+				return true;
+			})
+			.sort((a, b) => {
+				// ordernar por ano (decrescente)
+				return b.createdDate.getFullYear() - a.createdDate.getFullYear();
+			});
 	}
 }

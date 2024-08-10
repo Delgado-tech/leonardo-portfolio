@@ -1,0 +1,88 @@
+@use "../../../scss/base" as base;
+
+@import "../../../scss/utils.scss";
+
+section {
+	margin-top: 100px;
+}
+
+h3 {
+	@extend .container;
+
+	font-family: "Poppins", sans-serif;
+	font-size: 64px;
+	font-weight: 600;
+
+	line-height: 1;
+
+	.dot {
+		font-family: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+
+		color: base.$primary;
+	}
+
+	color: base.$gray-06;
+
+	transition: 0.2s ease;
+	transform: translateY(100px);
+}
+
+.github_link_btn {
+	@include paddingX(8%);
+
+	padding-top: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform: translateY(-150px);
+
+	.btn_text {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+
+		font-weight: inherit;
+		font-family: inherit;
+		font-size: inherit;
+	}
+
+	img {
+		transform: translateY(-2px);
+	}
+}
+
+@media screen and (max-width: 1150px) {
+	h3 {
+		@include paddingX(8%);
+	}
+}
+
+@media screen and (max-width: base.$bp-md) {
+	section {
+		margin-top: 50px;
+	}
+
+	h3 {
+		transform: translateY(150px);
+	}
+}
+
+@media screen and (max-width: base.$bp-sm) {
+	section {
+		margin-top: 0px;
+	}
+
+	h3 {
+		font-size: 56px;
+	}
+}
+
+@media screen and (max-width: base.$bp-xs) {
+	h3 {
+		font-size: 48px;
+	}
+}

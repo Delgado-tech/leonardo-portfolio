@@ -13,13 +13,13 @@ import { navbarLinkMockup } from '../../mocks/navbar-links.mockup';
 import { socialLinksMockup } from '../../mocks/social-links.mockup';
 import { ScrollObserverService } from '../../services/scroll-observer/scroll-observer.service';
 import { preventAnimationWhenPageLoad } from '../../utils/preventAnimationWhenPageLoad';
-import { RedirectButtonComponent } from '../redirect-button/redirect-button.component';
+import { ButtonComponent } from '../button/button.component';
 import { TextLinkComponent } from '../text-link/text-link.component';
 
 @Component({
 	selector: 'app-header',
 	standalone: true,
-	imports: [RouterLink, TextLinkComponent, RedirectButtonComponent, RouterLink],
+	imports: [RouterLink, TextLinkComponent, ButtonComponent, RouterLink],
 	templateUrl: './header.component.html',
 	styleUrl: './header.component.scss',
 })

@@ -42,3 +42,13 @@ html {
 .hide {
 	display: none !important;
 }
+
+.mobile_observation_text {
+	display: none;
+}
+
+.mobile_agent {
+	.mobile_observation_text {
+		display: block;
+	}
+}

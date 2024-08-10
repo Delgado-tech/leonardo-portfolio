@@ -69,27 +69,27 @@ export class ContentSliderComponent {
 	}
 
 	ngAfterViewInit() {
+		if (isPlatformServer(this.platformId)) return;
+
 		const container = this.containerRef.nativeElement;
 
-		if (isPlatformServer(this.platformId)) {
-			const wrapperElement =
-				(container.querySelector('.wrapper') as HTMLElement) ??
-				container.firstChild;
+		const wrapperElement =
+			(container.querySelector('.wrapper') as HTMLElement) ??
+			container.firstChild;
 
-			if (!wrapperElement) {
-				console.warn('Missing children on content-slider');
-				return;
-			}
-
-			const wrapperParentElement = wrapperElement.parentElement;
-
-			this.renderer.appendChild(
-				wrapperParentElement,
-				wrapperElement.cloneNode(true)
-			);
-		} else {
-			const elements = container.querySelector('.wrapper') as HTMLElement;
-			this.wrapperElements.push(elements.parentElement!);
+		if (!wrapperElement) {
+			console.warn('Missing children on content-slider');
+			return;
 		}
+
+		const wrapperParentElement = wrapperElement.parentElement;
+
+		this.renderer.appendChild(
+			wrapperParentElement,
+			wrapperElement.cloneNode(true)
+		);
+
+		const elements = container.querySelector('.wrapper') as HTMLElement;
+		this.wrapperElements.push(elements.parentElement!);
 	}
 }

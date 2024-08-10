@@ -42,8 +42,12 @@ header {
 	}
 }
 
-.lightText .nav_bar a {
+.lightText .nav_bar {
 	color: base.$gray-03 !important;
+
+	a {
+		color: base.$gray-03 !important;
+	}
 }
 
 .nav_bar {
@@ -52,6 +56,8 @@ header {
 	z-index: 1000;
 	width: 100%;
 
+	color: base.$gray-06 !important;
+
 	nav {
 		@include paddingY($padding-y);
 
@@ -59,10 +65,12 @@ header {
 		justify-content: space-between;
 	}
 
-	a {
-		color: base.$gray-06;
-		font-size: base.$text-base;
-		font-family: "Poppins", sans-serif;
+	ul {
+		gap: 0;
+	}
+
+	li {
+		padding: 8px 16px;
 	}
 
 	li,
@@ -73,9 +81,20 @@ header {
 
 	li:hover {
 		transform: scale(105%);
+
 		a {
 			color: base.$primary !important;
 		}
+	}
+
+	ul:hover li:not(:hover) a {
+		color: inherit !important;
+	}
+
+	a {
+		color: base.$gray-06;
+		font-size: base.$text-base;
+		font-family: "Poppins", sans-serif;
 	}
 
 	img {
@@ -102,13 +121,7 @@ header {
 	}
 
 	.nav_item_selected a {
-		text-decoration: underline;
-		text-decoration-color: base.$gray-04;
-		text-underline-offset: 4px;
-	}
-
-	.nav_item_selected:hover a {
-		text-decoration: none;
+		color: base.$primary !important;
 	}
 }
 

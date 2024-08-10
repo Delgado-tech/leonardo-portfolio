@@ -1,3 +1,21 @@
+<ng-template #template>
+    <ng-content></ng-content>
+</ng-template>
+
+@if (routeLink) {
+<a [routerLink]="[routeLink]" [target]="target">
+    <button #ButtonRef type="button">
+        <ng-container *ngTemplateOutlet="template"></ng-container>
+    </button>
+</a>
+} @else if (href) {
+<a [href]="href" [target]="target">
+    <button #ButtonRef type="button">
+        <ng-container *ngTemplateOutlet="template"></ng-container>
+    </button>
+</a>
+} @else {
 <button #ButtonRef [type]="type">
-    <ng-content />
+    <ng-container *ngTemplateOutlet="template"></ng-container>
 </button>
+}

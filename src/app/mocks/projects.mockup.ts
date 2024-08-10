@@ -1,14 +1,15 @@
-interface IProject {
+export interface IProjectMockupItem {
 	title: string;
 	description: string;
 	createdDate: Date;
 	bannerFileName: string;
+	technologies?: string[];
 	projectLink?: string;
 	repositoryLink?: string;
 	highlight?: boolean;
 }
 
-export const projectsMockup: IProject[] = [
+export const projectsMockup: IProjectMockupItem[] = [
 	{
 		title: 'Multiply Me',
 		description: `O site consiste em um jogo de matemática onde ajuda os usuários a treinarem multiplicação e pensamento rápido, a interface foi baseada no Duolingo, bem como as animações.`,
@@ -16,6 +17,7 @@ export const projectsMockup: IProject[] = [
 		bannerFileName: 'multiplyme.jpeg',
 		projectLink: 'https://delgatech-multiply-me.netlify.app/index.html',
 		repositoryLink: 'https://github.com/Delgado-tech/multiply-me-game',
+		technologies: ['Javascript', 'CSS', 'Figma', 'Netlify'],
 		highlight: true,
 	},
 	{
@@ -24,6 +26,15 @@ export const projectsMockup: IProject[] = [
 		createdDate: new Date(2024, 3, 7),
 		bannerFileName: 'imprinting.jpeg',
 		repositoryLink: 'https://github.com/Delgado-tech/imprinting-landing-page',
+		technologies: [
+			'React (Vite)',
+			'Typescript',
+			'TailwindCSS',
+			'Framer Motion',
+			'EmailJs',
+			'Figma',
+			'Vercel',
+		],
 		highlight: true,
 	},
 	{
@@ -32,6 +43,15 @@ export const projectsMockup: IProject[] = [
 		createdDate: new Date(2023, 11, 19),
 		bannerFileName: 'controle_de_estoque.png',
 		repositoryLink: 'https://github.com/Delgado-tech/dncommerce',
+		technologies: [
+			'React (Next.js)',
+			'Typescript',
+			'TailwindCSS',
+			'Express',
+			'MySQL',
+			'Figma',
+			'Vercel',
+		],
 		highlight: true,
 	},
 	{
@@ -41,6 +61,13 @@ export const projectsMockup: IProject[] = [
 		bannerFileName: 'meowtfolio.jpeg',
 		projectLink: 'https://meowtfolio.vercel.app/',
 		repositoryLink: 'https://github.com/Delgado-tech/portfolio-meow',
+		technologies: [
+			'React (Vite)',
+			'Javascript',
+			'Styled Components',
+			'Figma',
+			'Vercel',
+		],
 		highlight: true,
 	},
 	{
@@ -49,6 +76,27 @@ export const projectsMockup: IProject[] = [
 		createdDate: new Date(2024, 1, 12),
 		bannerFileName: 'financeio.jpeg',
 		repositoryLink: 'https://github.com/Delgado-tech/dncommerce',
+		technologies: [
+			'React (Next.js)',
+			'Typescript',
+			'TailwindCSS',
+			'ApexCharts',
+			'Express',
+			'Prisma',
+			'Jest',
+			'JsonWebToken',
+			'PostgreSQL',
+			'Figma',
+			'Vercel',
+		],
 		highlight: true,
+	},
+	{
+		title: 'asse',
+		description: `Um dashboard administrativo para análise de despesas, com funcionalidades para registrar receitas, despesas, definir metas e muito mais. Inclui gráficos informativos para facilitar o entendimento dos dados.`,
+		createdDate: new Date(2014, 1, 12),
+		bannerFileName: 'financeio.jpeg',
+		repositoryLink: 'https://github.com/Delgado-tech/dncommerce',
+		technologies: ['React (Next.js)', 'Typescript'],
 	},
 ];
