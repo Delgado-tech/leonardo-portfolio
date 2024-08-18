@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CvRedirectButtonComponent } from '../../../cv-redirect-button/cv-redirect-button.component';
+import { CvRedirectButtonComponent } from '../../../button-templates/cv-redirect-button/cv-redirect-button.component';
 
 @Component({
 	selector: 'app-about-me',

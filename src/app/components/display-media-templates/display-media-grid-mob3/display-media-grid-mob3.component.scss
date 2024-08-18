@@ -1,0 +1,26 @@
+@import "../../../../scss/utils.scss";
+
+.display_media {
+	@include paddingX(3%);
+
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 32px;
+
+	figure {
+		position: relative;
+		background-color: transparent;
+		width: clamp(300px, 30%, 420px);
+		aspect-ratio: 9/20;
+
+		border-radius: 18px;
+		box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
+
+		img {
+			object-fit: contain;
+			border-radius: 15px;
+			width: clamp(300px, 30%, 420px);
+		}
+	}
+}

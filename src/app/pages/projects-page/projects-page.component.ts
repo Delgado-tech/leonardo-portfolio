@@ -19,5 +19,5 @@ import { socialLinksMockup } from '../../mocks/social-links.mockup';
 })
 export class ProjectsPageComponent {
 	githubLink = socialLinksMockup.github;
-	redirect_icon = '../../../assets/icons/redirect-icon.svg';
+	redirect_icon = '../../../assets/icons/common/redirect-icon.svg';
 }

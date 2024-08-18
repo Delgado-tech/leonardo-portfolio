@@ -6,6 +6,7 @@ button {
 	font-family: "Poppins", sans-serif;
 	font-weight: 500;
 	cursor: pointer;
+	user-select: none;
 
 	width: 100%;
 	padding: 16px 48px;
@@ -64,5 +65,11 @@ button {
 	&.bordered {
 		background-color: transparent;
 		background: transparent;
+	}
+}
+
+@media screen and (max-width: base.$bp-sm) {
+	button {
+		padding: 12px 32px;
 	}
 }

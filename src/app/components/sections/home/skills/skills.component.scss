@@ -4,7 +4,7 @@
 
 section {
 	@extend .container;
-	@include paddingY(48px);
+	@include paddingY(72px);
 
 	position: relative;
 	display: flex;

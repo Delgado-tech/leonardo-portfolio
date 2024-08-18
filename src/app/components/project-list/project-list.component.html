@@ -28,7 +28,7 @@
         </thead>
         <tbody>
             @for (project of projectList(); track project) {
-            <tr>
+            <tr (click)="redirectToProjectPage(project.projectPageRouteLink)">
                 <td class="table_project_title">{{project.title}}</td>
                 <td class="table_project_year">{{project.createdDate.getFullYear()}}</td>
                 @if (showTechnologies) {

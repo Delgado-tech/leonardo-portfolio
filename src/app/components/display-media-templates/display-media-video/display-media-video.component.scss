@@ -1,0 +1,21 @@
+@import "../../../../scss/utils.scss";
+
+.display_media {
+	@include paddingX(3%);
+
+	display: flex;
+	justify-content: center;
+
+	.video_wrapper {
+		width: 500px;
+		display: flex;
+		width: clamp(calc(300px - 12%), 100%, 1200px);
+
+		video {
+			width: 100%;
+			aspect-ratio: 16/9;
+			border-radius: 18px;
+			box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
+		}
+	}
+}

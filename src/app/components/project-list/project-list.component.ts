@@ -9,10 +9,8 @@ import {
 	signal,
 	ViewChild,
 } from '@angular/core';
-import {
-	IProjectMockupItem,
-	projectsMockup,
-} from '../../mocks/projects.mockup';
+import { Router } from '@angular/router';
+import { IProjectMockupItem, ProjectMockup } from '../../mocks/projects.mockup';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
@@ -40,6 +38,7 @@ export class ProjectListComponent {
 	constructor(
 		@Inject(PLATFORM_ID)
 		private platform_id: any,
+		private router: Router,
 		private renderer: Renderer2
 	) {
 		this.projectList.set(this.getProjectList());
@@ -132,7 +131,7 @@ export class ProjectListComponent {
 	}
 
 	getProjectList(): IProjectMockupItem[] {
-		return projectsMockup
+		return ProjectMockup.data
 			.filter((p) => {
 				if (this.showOnlyHighlight === true) {
 					if (p.highlight === true) {
@@ -148,5 +147,9 @@ export class ProjectListComponent {
 				// ordernar por ano (decrescente)
 				return b.createdDate.getFullYear() - a.createdDate.getFullYear();
 			});
+	}
+
+	redirectToProjectPage(routeLink: string) {
+		this.router.navigate([routeLink]);
 	}
 }
