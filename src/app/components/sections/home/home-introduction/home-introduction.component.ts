@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../../../button/button.component';
 import { CharacterComponent } from '../../../character/character.component';
-import { CvRedirectButtonComponent } from '../../../cv-redirect-button/cv-redirect-button.component';
+
+import { CvRedirectButtonComponent } from '../../../button-templates/cv-redirect-button/cv-redirect-button.component';
 import { TextSliderComponent } from '../../../text-slider/text-slider.component';
 
 @Component({

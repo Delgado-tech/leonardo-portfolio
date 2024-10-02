@@ -1,0 +1,61 @@
+@use "../../../scss/base" as base;
+
+@import "../../../scss/utils.scss";
+
+.lets_talk_title {
+	color: base.$gray-01;
+
+	h3,
+	span {
+		text-transform: uppercase;
+		font-family: "Poppins", sans-serif;
+		font-weight: 600;
+	}
+
+	h3 {
+		font-size: base.$text-5xl;
+		line-height: 1;
+	}
+
+	span {
+		font-size: 80px;
+	}
+
+	&_dot {
+		color: base.$primary;
+	}
+}
+
+@media screen and (max-width: base.$bp-md) {
+	.lets_talk_title {
+		h3 {
+			font-size: base.$text-4xl;
+		}
+
+		span {
+			font-size: 70px;
+		}
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.lets_talk_title {
+		h3 {
+			font-size: base.$text-3xl;
+		}
+		span {
+			font-size: 50px;
+		}
+	}
+}
+
+@media screen and (max-width: 380px) {
+	.lets_talk_title {
+		h3 {
+			font-size: base.$text-2xl;
+		}
+		span {
+			font-size: 40px;
+		}
+	}
+}

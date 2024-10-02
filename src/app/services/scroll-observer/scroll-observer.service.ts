@@ -7,7 +7,10 @@ import {
 	RendererFactory2,
 } from '@angular/core';
 import { clamp } from '../../utils/clamp';
-import { IObserverItem } from './scroll-observer.service.interfaces';
+import {
+	IObserverItem,
+	RelativeToView,
+} from './scroll-observer.service.interfaces';
 
 @Injectable()
 export class ScrollObserverService {
@@ -54,16 +57,40 @@ export class ScrollObserverService {
 			if (!element) return;
 
 			const rect = element.getBoundingClientRect();
-			const distanceTop = rect.top - rect.height;
-			const distanceBottom = rect.bottom - rect.height;
-			const topInView = distanceTop <= 0;
-			const bottomInView = distanceTop <= 0;
+			const distanceTop = rect.top;
+			const distanceBottom = window.innerHeight - rect.bottom;
+			const topInView =
+				distanceTop - window.innerHeight <= 0 && distanceTop >= 0;
+			const bottomInView = rect.bottom >= 0 && distanceBottom >= 0;
 
-			const topToBottomDistancePercentage = clamp(
-				((rect.height - distanceBottom) / rect.height) * 100,
-				0,
-				100
-			);
+			const topToBottomDistancePercentage = (
+				relativeToView: RelativeToView
+			): number => {
+				const map = new Map<RelativeToView, number>();
+
+				map.set(
+					'top',
+					clamp(((rect.height - rect.bottom) / rect.height) * 100, 0, 100)
+				);
+
+				map.set(
+					'bottom',
+					clamp(((window.innerHeight - rect.top) / rect.height) * 100, 0, 100)
+				);
+
+				map.set(
+					'center',
+					clamp(
+						(((rect.bottom - rect.height - window.innerHeight / 2) * -1) /
+							rect.height) *
+							100,
+						0,
+						100
+					)
+				);
+
+				return map.get(relativeToView) ?? 0;
+			};
 
 			obs.handler({
 				element: {

@@ -1,0 +1,35 @@
+<section>
+	<span class="wave">
+		<svg width="100%" height="100%" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+			<path d="M0,47 Q50,47 50,100 L0,100" />
+			<path d="M41.9,66 Q62,100 200,100 L0,100" />
+		</svg>
+	</span>
+
+	<app-lets-talk-title />
+
+	<div class="contact_cta">
+		<span class="contact_cta_trace"></span>
+
+		<div class="contact_cta_btn">
+			<app-button [color]="'primary_gradient'" [route-link]="'/contato'">
+				<span>entrar em contato</span>
+			</app-button>
+		</div>
+	</div>
+
+	<div class="alternative_contact_buttons">
+		<div class="btn_email">
+			<app-button [color]="'lightgray'" [bordered]="true" [shrink]="true">
+				<span>{{ social.email }}</span>
+			</app-button>
+		</div>
+		<div class="btn_phone">
+			<app-button [color]="'lightgray'" [bordered]="true" [shrink]="true">
+				<span>{{ getFormalPhoneNumber() }}</span>
+			</app-button>
+		</div>
+	</div>
+
+	<app-footer />
+</section>

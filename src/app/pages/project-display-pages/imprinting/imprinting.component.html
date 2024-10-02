@@ -1,0 +1,16 @@
+<app-project-display-page-template [project-id]="projectId">
+    <div media>
+        <app-display-media-banner-overlay>
+            <img [attr.data-movement-range]="15" [src]="getAssetUrl('banner-overlay-0.png')" alt="banner"
+                class="fill" />
+            <img [attr.data-movement-range]="5" class="project_banner_title" [src]="getAssetUrl('banner-overlay-1.png')"
+                alt="banner" />
+        </app-display-media-banner-overlay>
+        <app-display-media-video [video-source]="getAssetUrl('video-01.mp4')" />
+        <app-display-media-grid-mob1-desk2 [image-sources]="[
+                                        getAssetUrl('desktop-view-01.jpeg'), 
+                                        getAssetUrl('desktop-view-02.png'), 
+                                        getAssetUrl('mobile-view-01.png')
+                                        ]" />
+    </div>
+</app-project-display-page-template>

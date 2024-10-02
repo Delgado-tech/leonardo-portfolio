@@ -1,0 +1,68 @@
+@use "../../../scss/base" as base;
+
+@import "../../../scss/utils.scss";
+
+.footer {
+	@include paddingX(32px);
+	width: calc(100% - 32px - 32px);
+
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+	gap: 32px;
+
+	position: absolute;
+	bottom: 32px;
+	left: 0;
+
+	&_copyright_text {
+		-webkit-text-fill-color: transparent;
+		-webkit-background-clip: text;
+		background-clip: text;
+		background-image: base.$gradient-gray;
+
+		user-select: none;
+
+		font-weight: 500;
+	}
+
+	&_social_medias {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+		&_title {
+			user-select: none;
+			color: base.$gray-04;
+			font-weight: 500;
+		}
+
+		ul {
+			display: flex;
+			gap: 24px;
+		}
+
+		li a {
+			color: base.$gray-03;
+			font-weight: 500;
+		}
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.footer {
+		flex-direction: column-reverse;
+		align-items: center;
+
+		.footer_social_medias_title {
+			text-align: center;
+		}
+	}
+}
+
+@media screen and (max-width: 380px) {
+	.footer_copyright_text {
+		display: block;
+		text-align: center;
+	}
+}

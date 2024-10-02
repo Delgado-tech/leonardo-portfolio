@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { technologyIcons } from '../../../../mocks/technology-icons.mockup';
+import { technologyIconsMockup } from '../../../../mocks/technology-icons.mockup';
 import { TooltipComponent } from '../../../tooltip/tooltip.component';
 
 @Component({
@@ -13,7 +13,7 @@ export class SkillsComponent {
 	private iconSrc: string =
 		'../../../../../assets/icons/technologies/?dir/?icon.svg';
 
-	technologyIcons = technologyIcons;
+	technologyIcons = technologyIconsMockup;
 
 	getIconURL(iconDir: string, iconName: string): string {
 		return `url('${this.iconSrc

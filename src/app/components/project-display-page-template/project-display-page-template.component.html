@@ -1,0 +1,75 @@
+<main>
+    <app-header />
+    @if (project && nextProject) {
+
+    <section class="project_info_section">
+        <h3>{{project.title}}</h3>
+        <div class="project_info_container">
+            <div class="project_info_row">
+                <div class="project_info_wrapper">
+                    <span class="item_label">Ano</span>
+                    <span class="project_year">{{project.createdDate.getFullYear()}}</span>
+                </div>
+                <div class="project_info_wrapper">
+                    <span class="item_label">Tecnologias</span>
+                    <div class="technology_list">
+                        @for (technology of project.technologies; track technology) {
+                        <span>{{technology}}</span>
+                        }
+                    </div>
+                </div>
+            </div>
+            @if (project.contributors) {
+            <div class="project_info_wrapper">
+                <span class="item_label">Contribuidores</span>
+                <div class="project_contributors">
+                    @for (contributor of project.contributors; track contributor) {
+                    <span><span class="dot">•</span> {{contributor}}</span>
+                    }
+                </div>
+            </div>
+            }
+            <div class="project_info_wrapper">
+                <span class="item_label">Descrição</span>
+                <p class="project_description">{{project.description}}</p>
+            </div>
+            <div class="project_links">
+                @if(project.projectLink) {
+                <app-button color="gray" [href]="project.projectLink" target="_blank">
+                    Visitar Site
+                    <img class="redirect_icon" alt="icon" [src]="redirect_icon" />
+                </app-button>
+                }
+                @if(project.repositoryLink) {
+                <app-button color="gray" [href]="project.repositoryLink" [bordered]="true" target="_blank">
+                    <span class="see_repository_text"><span class="see_word">Ver</span> Repositório</span>
+                    <img [src]="github_icon" alt="icon" />
+                </app-button>
+                }
+            </div>
+        </div>
+    </section>
+
+
+    <section #MediaContainer>
+        <ng-content select="[media]"></ng-content>
+    </section>
+
+    <section class="next_case">
+        <div class="next_case_wrapper">
+            <a [routerLink]="nextProject.projectPageRouteLink">
+                <figure>
+                    <span class="next_case_name">proximo caso</span>
+                    <img [src]="'../../../assets/project-banners/' + nextProject.bannerFileName"
+                        alt="next_project_figure" />
+                </figure>
+            </a>
+        </div>
+        <div class="more_projects_btn">
+            <app-project-page-redirect-button />
+        </div>
+    </section>
+
+    }
+    <app-footer />
+</main>

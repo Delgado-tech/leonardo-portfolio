@@ -6,6 +6,7 @@ button {
 	font-family: "Poppins", sans-serif;
 	font-weight: 500;
 	cursor: pointer;
+	user-select: none;
 
 	width: 100%;
 	padding: 16px 48px;
@@ -23,6 +24,10 @@ button {
 		filter: brightness(120%);
 		transform: scale(105%);
 		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+	}
+
+	&.shrink {
+		padding: 8px 28px;
 	}
 
 	&.primary {
@@ -60,5 +65,11 @@ button {
 	&.bordered {
 		background-color: transparent;
 		background: transparent;
+	}
+}
+
+@media screen and (max-width: base.$bp-sm) {
+	button {
+		padding: 12px 32px;
 	}
 }

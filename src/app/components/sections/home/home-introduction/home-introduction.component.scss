@@ -8,15 +8,27 @@ section {
 	background-color: base.$gray-02;
 	width: 100%;
 	position: relative;
+	overflow: hidden;
+	padding-bottom: 90px;
 
 	margin-bottom: 100px;
+
+	&::after {
+		content: " ";
+		z-index: 0;
+		width: 100%;
+		height: 3%;
+		background-color: base.$gray-01;
+		position: absolute;
+		bottom: 0;
+	}
 }
 
 .home_introduction {
 	display: flex;
 	height: 100%;
 	position: relative;
-	overflow-y: hidden;
+	overflow: hidden;
 }
 
 .home_introduction__main_text {
@@ -35,6 +47,8 @@ section {
 		width: 10%;
 		height: 100%;
 		filter: drop-shadow(2px 0px 1px rgba(0, 0, 0, 0.04));
+
+		transition: 0.2s ease;
 
 		path {
 			fill: base.$gray-01;
@@ -74,6 +88,13 @@ section {
 		&_name {
 			color: base.$primary;
 			font-size: base.$text-6xl;
+
+			span {
+				color: inherit;
+				font-size: inherit;
+				font-family: inherit;
+				font-weight: inherit;
+			}
 		}
 
 		&_profession_wrapper {
@@ -87,6 +108,10 @@ section {
 			height: 1px;
 			border-radius: 50px;
 			background-color: base.$primary;
+
+			&:last-child {
+				display: none;
+			}
 		}
 
 		&_profession_wrapper p {
@@ -111,11 +136,205 @@ section {
 .cta_section {
 	@include paddingY(80px);
 	display: flex;
-	gap: 32px;
+	flex-grow: 0;
+	flex-wrap: wrap;
+	gap: 16px 32px;
 }
 
 .home__text_slider {
 	position: absolute;
 	width: 101%;
+	z-index: 1;
 	transform: rotate(1deg) translate(-2px, -20px);
+}
+
+// MEDIA QUERIES
+
+@media screen and (max-width: 1303px) {
+	.home_introduction__main_text {
+		@include paddingX(10%, 7%);
+		width: calc(55% - 10% - 2%);
+	}
+
+	.home__character {
+		transform: translateX(40px);
+	}
+}
+
+@media screen and (max-width: 1150px) {
+	.apresentation_title {
+		&_name {
+			font-size: base.$text-4xl !important;
+		}
+
+		&_prefix {
+			font-size: base.$text-lg !important;
+			text-align: start;
+		}
+	}
+
+	.character {
+		transform: translateY(-50px);
+	}
+}
+
+@media screen and (max-height: 900px) {
+	.home_introduction__main_text {
+		@include paddingY(calc(236px - 50px), calc(96px + 50px));
+	}
+
+	.home__character {
+		transform: translateX(30px) translateY(-90px);
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.home_introduction__main_text {
+		@include paddingY(calc(236px - 50px), calc(96px + 50px));
+		text-align: center;
+		text-wrap: balance;
+
+		&__wave {
+			width: 0%;
+		}
+	}
+
+	.apresentation_title {
+		&_name {
+			span {
+				visibility: hidden;
+				display: block;
+				overflow: hidden;
+				height: 0;
+			}
+
+			&:after {
+				content: "Leonardo D.";
+				display: block;
+			}
+		}
+
+		&_prefix {
+			font-size: base.$text-base !important;
+			text-align: center;
+		}
+
+		&_profession_wrapper span:last-child {
+			display: inherit !important;
+		}
+	}
+
+	.cta_section {
+		justify-content: center;
+	}
+
+	.home__character {
+		transform: translateX(20px) translateY(-120px);
+	}
+}
+
+@media screen and (max-width: base.$bp-md) {
+	section {
+		height: 100%;
+		background-color: transparent;
+	}
+
+	.home_introduction__main_text {
+		@include paddingX(8%);
+		padding-top: 64px;
+
+		width: calc(100% - 8% - 8%);
+	}
+
+	.home_introduction {
+		@include paddingY(100px, 0px);
+		flex-direction: column-reverse;
+	}
+
+	.apresentation_title {
+		width: 100% !important;
+
+		&_name {
+			span {
+				visibility: visible;
+				display: block;
+				overflow: auto;
+				height: auto;
+			}
+
+			&:after {
+				display: none;
+			}
+		}
+
+		&_profession_wrapper {
+			span {
+				background-color: base.$gray-02 !important;
+			}
+
+			span:last-child {
+				display: none !important;
+			}
+		}
+	}
+
+	.apresentation_text {
+		width: 100% !important;
+	}
+
+	.cta_section {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.home__character {
+		position: relative;
+
+		margin-left: 50%;
+		transform: translateX(calc(-50% - 5px));
+
+		@include size(300px);
+		border-radius: 0 0 50% 0;
+		overflow: hidden;
+
+		&::before {
+			content: " ";
+			@include size(290px);
+			transform: translateY(13px) translateX(10px);
+			background-color: base.$gray-02;
+			border-radius: 50%;
+			position: absolute;
+		}
+
+		.character {
+			transform: translateY(-530px);
+		}
+	}
+}
+
+@media screen and (max-width: base.$bp-sm) {
+	.apresentation_title {
+		&_name {
+			span {
+				visibility: hidden;
+				display: block;
+				overflow: hidden;
+				height: 0;
+			}
+
+			&:after {
+				content: "Leonardo D.";
+				display: block;
+			}
+		}
+
+		&_profession_wrapper {
+			flex-wrap: wrap;
+			justify-content: center;
+
+			p {
+				text-wrap: wrap !important;
+			}
+		}
+	}
 }

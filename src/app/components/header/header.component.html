@@ -1,42 +1,51 @@
 <header #header [attr.data-hamburger-menu-open]="isHamburgerMenuOpen"
-    [attr.data-show-hamburger-menu]="showHamburgerMenu" class="prevent_animation_when_page_load">
-    <div class="nav_bar">
-        <nav>
-            <figure class="logo">
-                <img src="../../../assets/icons/logo.svg" draggable="false" />
-            </figure>
-            <ul class="internal_link_routes">
-                <li><a [routerLink]="['/test']">Serviços</a></li>
-                <li><a>Projetos</a></li>
-                <li><a>Contato</a></li>
-            </ul>
-        </nav>
-    </div>
-    <span class="nav_bar_hamburger_outside" (click)="toggle()"></span>
-    <div class="ham" (click)="toggle()">
-        <span class="ham_trace"></span>
-        <span class="ham_trace"></span>
-        <span class="ham_trace"></span>
-    </div>
-    <div class="nav_bar_hamburger">
-        <nav>
-            <div class="nav_top">
-                <p>le menu</p>
+	[attr.data-show-hamburger-menu]="showHamburgerMenu" class="prevent_animation_when_page_load">
+	<div class="nav_bar">
+		<nav>
+			<a [routerLink]="'/'">
+				<figure class="logo">
+					<img src="../../../assets/icons/logo.svg" alt="logo" draggable="false" />
+				</figure>
+			</a>
+			<ul class="internal_link_routes">
+				@for (link of navbarLinks; track link) {
+				<li [class]="isCurrentRouteLink(link.routeLink)">
+					<a [routerLink]="[link.routeLink]">{{ link.routeDisplay }}</a>
+				</li>
+				}
+			</ul>
+		</nav>
+	</div>
+	<span class="nav_bar_hamburger_outside" (click)="toggle()"></span>
+	<div class="ham" (click)="toggle()">
+		<span class="ham_trace"></span>
+		<span class="ham_trace"></span>
+		<span class="ham_trace"></span>
+	</div>
+	<div class="nav_bar_hamburger">
+		<nav>
+			<div class="nav_top">
+				<p>menu</p>
 
-                <ul class="internal_link_routes">
-                    <li style="--i:2;" class="nav_item_selected nav_home_option">
-                        <a>Home</a>
-                    </li>
-                    <li style="--i:3;"><a [routerLink]="['/test']">Serviços</a></li>
-                    <li style="--i:4;"><a>Projetos</a></li>
-                    <li style="--i:5;"><a>Contato</a></li>
-                </ul>
-            </div>
-            <ul class="external_link_routes">
-                <li><app-text-link [href]="social.linkedin">linkedin</app-text-link></li>
-                <li><app-text-link [href]="social.instagram">instagram</app-text-link></li>
-                <li><app-text-link [href]="social.youtube">youtube</app-text-link></li>
-            </ul>
-        </nav>
-    </div>
+				<ul class="internal_link_routes">
+					@for (link of navbarLinks; track link) {
+
+					<li [style]="'--i: ' + ($index + 2)"
+						[class]="'nav_home_option ' + isCurrentRouteLink(link.routeLink)">
+						<a [routerLink]="[link.routeLink]">{{ link.routeDisplay }}</a>
+					</li>
+					}
+				</ul>
+			</div>
+			<ul class="external_link_routes">
+				<li>
+					<app-text-link [href]="social.linkedin">linkedin</app-text-link>
+				</li>
+				<li>
+					<app-text-link [href]="social.instagram">instagram</app-text-link>
+				</li>
+				<li><app-text-link [href]="social.youtube">youtube</app-text-link></li>
+			</ul>
+		</nav>
+	</div>
 </header>

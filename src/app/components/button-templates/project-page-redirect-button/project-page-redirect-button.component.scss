@@ -1,0 +1,31 @@
+@use "../../../../scss/base" as base;
+
+@import "../../../../scss/utils.scss";
+
+div {
+	@include paddingX(8%);
+
+	padding-top: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.btn_text {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+
+		font-weight: inherit;
+		font-family: inherit;
+		font-size: inherit;
+	}
+
+	.projects_count {
+		background-color: base.$gray-04;
+		color: base.$gray-03;
+		border-radius: 15px;
+		padding: 4px 16px;
+	}
+}

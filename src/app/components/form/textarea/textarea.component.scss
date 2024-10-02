@@ -1,0 +1,50 @@
+@use "../../../../scss/base" as base;
+
+@import "../../../../scss/utils.scss";
+
+.textarea_wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+
+	color: base.$gray-01;
+
+	label {
+		font-size: base.$text-lg;
+		transition: color 0.2s ease;
+	}
+
+	label.textarea_has_text {
+		color: base.$gray-04;
+	}
+
+	textarea {
+		@include paddingY(24px);
+		border-bottom: 1px solid base.$gray-04;
+		resize: none;
+
+		font-size: base.$text-lg;
+
+		background-color: transparent;
+
+		outline: none;
+
+		scrollbar-color: base.$gray-04 transparent;
+	}
+
+	textarea::placeholder {
+		color: base.$gray-04;
+	}
+
+	.textarea_remaining_letters {
+		text-align: end;
+		margin-top: 4px;
+
+		span {
+			color: base.$gray-06;
+			padding: 2px 12px;
+			border-radius: 25px;
+			background-color: base.$gray-04;
+		}
+	}
+}

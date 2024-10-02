@@ -3,27 +3,33 @@ import {
 	Component,
 	ElementRef,
 	Inject,
+	Input,
 	PLATFORM_ID,
 	Renderer2,
 	ViewChild,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { navbarLinkMockup } from '../../mocks/navbar-links.mockup';
+import { socialLinksMockup } from '../../mocks/social-links.mockup';
 import { ScrollObserverService } from '../../services/scroll-observer/scroll-observer.service';
 import { preventAnimationWhenPageLoad } from '../../utils/preventAnimationWhenPageLoad';
-import { socialLinks } from '../../utils/socialLinks';
+import { ButtonComponent } from '../button/button.component';
 import { TextLinkComponent } from '../text-link/text-link.component';
 
 @Component({
 	selector: 'app-header',
 	standalone: true,
-	imports: [RouterLink, TextLinkComponent],
+	imports: [RouterLink, TextLinkComponent, ButtonComponent, RouterLink],
 	templateUrl: './header.component.html',
 	styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+	@Input('lightText') lightText: boolean = false;
+
 	@ViewChild('header') headerRef!: ElementRef<HTMLElement>;
 
-	social = socialLinks;
+	social = socialLinksMockup;
+	navbarLinks = navbarLinkMockup;
 
 	showHamburgerMenu = false;
 	isHamburgerMenuOpen = false;
@@ -31,6 +37,7 @@ export class HeaderComponent {
 	constructor(
 		@Inject(PLATFORM_ID)
 		private plataformId: any,
+		private router: Router,
 		private renderer: Renderer2,
 		private scrollObserver: ScrollObserverService
 	) {
@@ -50,6 +57,9 @@ export class HeaderComponent {
 	ngAfterViewInit() {
 		if (isPlatformBrowser(this.plataformId)) {
 			preventAnimationWhenPageLoad(this.headerRef.nativeElement, 700);
+
+			if (this.lightText)
+				this.headerRef.nativeElement.classList.add('lightText');
 
 			this.scrollObserver.registerObserver({
 				HTMLElement: this.headerRef,
@@ -76,5 +86,13 @@ export class HeaderComponent {
 		} else {
 			this.renderer.removeStyle(document.body, 'overflow-y');
 		}
+	}
+
+	isCurrentRouteLink(routeLink: string): string {
+		if (this.router.url === routeLink) {
+			return 'nav_item_selected';
+		}
+
+		return '';
 	}
 }

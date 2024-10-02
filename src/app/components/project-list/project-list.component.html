@@ -1,21 +1,82 @@
 <section #Container>
-    <h3>Projetos em Destaque</h3>
+    @if (sectionTitle) {
+    <h3 class="project_list_title">{{sectionTitle}}</h3>
+    }
+    <span class="mobile_observation_text">*Click na imagem ou passe o mouse por cima para ver uma breve descrição</span>
+
     <div class="project_banner" #Banner>
-        @for (project of projectList; track project) {
+        @for (project of projectList(); track project) {
         <figure>
             <img [src]="'../../../assets/project-banners/' + project.bannerFileName"
                 [alt]="'website ' + project.title" />
         </figure>
         }
     </div>
+    <span class="project_banner_btn" #BannerBtn>Ver mais</span>
+
     <table #Table>
-        <tbody>
-            @for (project of projectList; track project) {
+        <thead>
+            @if (showTableHeaders) {
             <tr>
-                <td>{{project.title}}</td>
-                <td>{{project.createdDate.getFullYear()}}</td>
+                <th>Nome</th>
+                <th>Ano</th>
+                @if (showTechnologies) {
+                <th>Tecnologias</th>
+                }
+            </tr>
+            }
+        </thead>
+        <tbody>
+            @for (project of projectList(); track project) {
+            <tr (click)="redirectToProjectPage(project.projectPageRouteLink)">
+                <td class="table_project_title">{{project.title}}</td>
+                <td class="table_project_year">{{project.createdDate.getFullYear()}}</td>
+                @if (showTechnologies) {
+                <td class="table_project_technologies">
+                    <div>
+                        @if (project.technologies) {
+                        @for(technology of project.technologies.slice(0, 2); track technology) {
+                        <span>{{technology}}</span>
+                        }
+                        @if (project.technologies.length - 2 > 0) {
+                        <span class="hidden_technologies">+{{project.technologies.length - 2}}</span>
+                        }
+                        }
+                    </div>
+                </td>
+                }
+
             </tr>
             }
         </tbody>
     </table>
+
+    <div class="project_list_blocks">
+        @for (project of projectList(); track project) {
+        <div class="project_list_blocks__project">
+            <div class="img_card">
+                <div class="img_card_content">
+                    <figure class="img_card_content_front">
+                        <img [src]="'../../../assets/project-banners/' + project.bannerFileName"
+                            [alt]="'website ' + project.title" draggable="false" />
+                    </figure>
+                    <div class="img_card_content_back">
+                        <img src="../../../assets/icons/common/quote.svg" alt="quotes" />
+                        <p>
+                            {{project.description}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="project_content">
+                <div>
+                    <h3>{{project.title}}</h3>
+                    <span>{{project.createdDate.getFullYear()}}</span>
+                </div>
+                <app-button [shrink]="true" class="cta_button">ver mais</app-button>
+            </div>
+        </div>
+        }
+    </div>
+
 </section>

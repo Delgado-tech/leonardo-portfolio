@@ -48,19 +48,22 @@ section {
 	&_description {
 		@extend %flexCol;
 		gap: 8px;
+		width: 300px;
 
 		h3 {
 			color: base.$primary;
 			font-size: base.$text-xl;
 			font-family: "Poppins", sans-serif;
 			font-weight: 600;
+			text-align: center;
+			text-wrap: nowrap;
 		}
 
 		p {
 			color: base.$gray-04;
 			text-wrap: pretty;
 			text-align: center;
-			width: 300px;
+			width: 100%;
 		}
 	}
 }
@@ -80,5 +83,29 @@ section {
 		font-weight: inherit;
 
 		text-transform: uppercase;
+	}
+}
+
+@media screen and (max-width: 974px) {
+	section {
+		@include paddingX(8%);
+	}
+
+	.service_item_description {
+		width: 250px;
+	}
+}
+
+@media screen and (max-width: base.$bp-sm) {
+	section {
+		@include paddingX(3%);
+	}
+
+	.section_title {
+		text-align: center;
+	}
+
+	.service_item p {
+		width: clamp(100px, 100%, 300px);
 	}
 }

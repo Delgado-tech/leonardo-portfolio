@@ -1,0 +1,19 @@
+<main>
+    <app-header />
+    <section>
+        <h3>Meus Projetos<span class="dot">.</span></h3>
+
+        <app-project-list [show-only-highlight]="false" />
+
+        <div class="github_link_btn">
+            <app-button color="gray" [href]="githubLink" target="_blank">
+                <span class="btn_text">
+                    Mais Projetos em GitHub
+                    <img [src]="redirect_icon" alt="icon" />
+                </span>
+            </app-button>
+        </div>
+
+        <app-contact-call />
+    </section>
+</main>

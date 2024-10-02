@@ -1,0 +1,226 @@
+@use "../../../scss/base" as base;
+
+@import "../../../scss/utils.scss";
+
+main {
+	@include paddingY(200px);
+
+	position: relative;
+	height: 100%;
+}
+
+section.project_info_section {
+	@extend .container;
+}
+
+h3 {
+	font-family: "Poppins", sans-serif;
+	font-size: clamp(1rem, 12vw, 64px);
+	font-weight: 600;
+
+	word-break: break-all;
+
+	line-height: 1;
+
+	color: base.$gray-06;
+
+	transition: 0.2s ease;
+}
+
+.project_info_container {
+	@include paddingY(100px);
+
+	display: flex;
+	flex-direction: column;
+	gap: 48px;
+
+	max-width: 950px;
+
+	.project_info_row {
+		display: flex;
+		align-items: start;
+		gap: 32px 150px;
+		color: base.$gray-05;
+	}
+
+	.project_info_wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.project_year {
+		font-weight: 500;
+		font-size: base.$text-xl;
+	}
+
+	.technology_list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	.technology_list span {
+		user-select: none;
+		background-color: base.$gray-02;
+		font-weight: 500;
+		border-radius: 50px;
+		padding: 8px 24px;
+	}
+
+	.project_contributors {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 16px 32px;
+	}
+
+	.project_contributors span {
+		font-size: base.$text-lg;
+		line-height: 1.5;
+	}
+	.project_contributors span.dot {
+		color: base.$gray-03;
+	}
+
+	.project_description {
+		font-size: base.$text-lg;
+		line-height: 1.5;
+	}
+
+	.project_links {
+		margin-top: 24px;
+
+		display: flex;
+		flex-wrap: wrap-reverse;
+		gap: 16px 24px;
+
+		.see_repository_text {
+			font-size: inherit;
+			font-family: inherit;
+			font-weight: inherit;
+		}
+
+		.see_word {
+			font-size: inherit;
+			font-family: inherit;
+			font-weight: inherit;
+		}
+
+		.redirect_icon {
+			transform: translateY(-2px);
+		}
+	}
+}
+
+.item_label {
+	color: base.$gray-03;
+	font-family: "Poppins", sans-serif;
+}
+
+.next_case {
+	margin-top: 200px;
+	margin-bottom: 200px;
+
+	position: relative;
+	&::before {
+		content: " ";
+		position: absolute;
+		width: 100%;
+		height: 70%;
+		background-color: base.$gray-06;
+		top: 6%;
+		left: 0;
+		z-index: -1;
+	}
+}
+
+.next_case_wrapper {
+	a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	figure {
+		position: relative;
+		width: clamp(300px, 84%, 1000px);
+		cursor: pointer;
+
+		&:hover {
+			img {
+				filter: saturate(1);
+				transform: scale(1);
+				box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.15);
+			}
+
+			.next_case_name {
+				top: -53px;
+			}
+		}
+	}
+
+	img {
+		width: 100%;
+		object-fit: contain;
+		transform: scale(0.95);
+		filter: saturate(0);
+		transition: 0.2s ease;
+		border-radius: 15px;
+
+		box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
+	}
+
+	.next_case_name {
+		font-family: "Poppins", sans-serif;
+		text-wrap: nowrap;
+		font-weight: 600;
+		font-size: clamp(16px, 9vw, 72px);
+		display: flex;
+		justify-content: center;
+		width: 95%;
+		color: base.$gray-03;
+		line-height: 1;
+		position: absolute;
+		text-transform: uppercase;
+		text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+		top: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+		transition: top 0.2s ease;
+	}
+}
+
+.more_projects_btn {
+	position: absolute;
+	width: 100%;
+}
+
+@media screen and (max-width: base.$bp-md) {
+	.project_info_row {
+		flex-wrap: wrap;
+	}
+
+	.next_case_wrapper {
+		figure:hover .next_case_name {
+			top: -20%;
+		}
+
+		img {
+			filter: none;
+		}
+
+		.next_case_name {
+			top: -13.5%;
+		}
+	}
+}
+
+@media screen and (max-width: base.$bp-sm) {
+	main {
+		padding-top: 150px;
+	}
+
+	.project_links .see_word {
+		display: none;
+	}
+}
